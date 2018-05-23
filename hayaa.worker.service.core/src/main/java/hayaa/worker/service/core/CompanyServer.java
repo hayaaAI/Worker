@@ -1,5 +1,6 @@
-package hayaa.worker.service;
+package hayaa.worker.service.core;
 
+import hayaa.worker.service.CompanyService;
 import hayaa.basemodel.model.FunctionListResult;
 import hayaa.basemodel.model.FunctionOpenResult;
 import hayaa.basemodel.model.FunctionResult;
@@ -10,7 +11,7 @@ import hayaa.worker.service.model.CompanySearchPamater;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
+@Service("companyService")
 public class CompanyServer implements CompanyService {
     @Override
     public FunctionResult<Company> Create(Company info) {

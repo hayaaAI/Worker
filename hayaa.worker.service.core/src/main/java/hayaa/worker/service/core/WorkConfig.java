@@ -1,4 +1,4 @@
-package hayaa.worker.service;
+package hayaa.worker.service.core;
 
 import hayaa.basemodel.model.ConfigContent;
 

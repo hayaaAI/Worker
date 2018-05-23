@@ -1,5 +1,6 @@
 package hayaa.worker.servicecontroller;
 
+import hayaa.worker.service.model.Company;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,5 +15,9 @@ public class SampleController {
     @ResponseBody
     String home() {
         return "Hello World!";
+    }
+    @RequestMapping("/t1")
+    Company home1() {
+        return new Company();
     }
 }

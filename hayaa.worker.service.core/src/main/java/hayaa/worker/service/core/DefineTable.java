@@ -1,4 +1,4 @@
-package hayaa.worker.service;
+package hayaa.worker.service.core;
 
  class DefineTable {
      public static final String DatabaseName ="Organization" ;
