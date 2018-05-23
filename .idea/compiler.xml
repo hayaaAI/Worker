@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="hayaa.worker.service" target="1.8" />
+      <module name="hayaa.worker.service.controller" target="1.8" />
+      <module name="hayaa.worker.service.core" target="1.8" />
+      <module name="hayaa.worker.servicesite" target="1.8" />
+      <module name="hayaa.workerservice" target="1.8" />
+      <module name="hayaaworkercontroller" target="1.8" />
+      <module name="hayaaworkerservice" target="1.5" />
+      <module name="Worker" target="1.5" />
+      <module name="worker.service.controller" target="1.5" />
+      <module name="worker.service.core" target="1.8" />
+      <module name="worker.servicesite" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
