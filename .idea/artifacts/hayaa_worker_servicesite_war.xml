@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="hayaa.worker.servicesite:war">
     <output-path>$PROJECT_DIR$/hayaa.worker.servicesite/target</output-path>
-    <root id="archive" name="worker.servicesite.war">
+    <root id="archive" name="hayaa.worker.servicesite.war">
       <element id="artifact" artifact-name="hayaa.worker.servicesite:war exploded" />
     </root>
   </artifact>

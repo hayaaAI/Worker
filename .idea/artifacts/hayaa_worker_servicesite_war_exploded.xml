@@ -1,13 +1,12 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="hayaa.worker.servicesite:war exploded">
-    <output-path>$PROJECT_DIR$/hayaa.worker.servicesite/target/worker.servicesite</output-path>
+    <output-path>$PROJECT_DIR$/hayaa.worker.servicesite/target/hayaa.worker.servicesite</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="hayaa.worker.servicesite" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: hayaaAI:worker.service.controller:1.0.0-SNAPSHOT" />
           <element id="file-copy" path="M:/mavenRepos/repo/hayaaAI/hayaa.serviceplatform.client/1.0.0-SNAPSHOT/hayaa.serviceplatform.client-1.0.0-20180523.085205-10.jar" output-file-name="hayaa.serviceplatform.client-1.0.0-SNAPSHOT.jar" />
           <element id="library" level="project" name="Maven: hayaaAI:hayaa.basemodel:1.0.0-SNAPSHOT" />
           <element id="file-copy" path="M:/mavenRepos/repo/hayaaAI/hayaa.common/1.0.0-SNAPSHOT/hayaa.common-1.0.0-20180522.121750-18.jar" output-file-name="hayaa.common-1.0.0-SNAPSHOT.jar" />
@@ -38,7 +37,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/hayaa.worker.servicesite/target/worker.servicesite/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/hayaa.worker.servicesite/target/hayaa.worker.servicesite/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="hayaa.worker.servicesite/web/Web" />
     </root>
