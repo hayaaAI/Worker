@@ -1,12 +1,11 @@
 package hayaa.worker.service.model;
 
-import hayaa.basemodel.model.GridPager.PagerTotal;
 import hayaa.basemodel.model.PamaterOperationType;
 import hayaa.basemodel.model.SearchPamaterMariadbBase;
 
 import java.util.List;
 
-public class PersonSearchPamater extends SearchPamaterMariadbBase implements PagerTotal {
+public class PersonSearchPamater extends SearchPamaterMariadbBase  {
     private Integer PersonId;
 
     public void setPersonId(Integer PersonIdvalue) {

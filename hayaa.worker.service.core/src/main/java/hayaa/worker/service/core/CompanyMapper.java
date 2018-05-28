@@ -1,7 +1,5 @@
 package hayaa.worker.service.core;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageInfo;
 import hayaa.worker.service.model.Company;
 import org.apache.ibatis.annotations.*;
 
@@ -16,7 +14,7 @@ public interface CompanyMapper {
     @Update("update Company set companyCode=#{company.companyCode},companyFullName=#{company.companyFullName}," +
             "companyName=#{company.companyName},birdthday=#{company.birdthday} where companyId=#{company.companyId}")
     Boolean update(@Param("company") Company info);
-    @Delete("delete from  Company where companyId in ${ids}")
+    @Delete("delete from  Company where companyId in (${ids})")
     Boolean delete(@Param("ids") String ids);
     @Select("select * from Company  where companyId=#{Id}")
     Company get(int Id);

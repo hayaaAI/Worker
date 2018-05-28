@@ -1,13 +1,9 @@
 package hayaa.worker.service.model;
 
-import hayaa.basemodel.model.GridPager.PagerTotal;
-import hayaa.basemodel.model.PamaterOperationType;
 import hayaa.basemodel.model.BaseData;
-import hayaa.basemodel.model.SearchPamaterMariadbBase;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class Department extends BaseData {
     private Integer DepartmentId;
@@ -18,6 +14,16 @@ public class Department extends BaseData {
 
     public Integer getDepartmentId() {
         return this.DepartmentId;
+    }
+
+    private Integer CompanyId;
+
+    public void setCompanyId(Integer CompanyIdvalue) {
+        this.CompanyId = CompanyIdvalue;
+    }
+
+    public Integer getCompanyId() {
+        return this.CompanyId;
     }
 
     private String Name;
@@ -49,34 +55,16 @@ public class Department extends BaseData {
     public String getRemark() {
         return this.Remark;
     }
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date Birdthday;
 
-    private java.sql.Date Birdthday;
-
-    public void setBirdthday(java.sql.Date Birdthdayvalue) {
+    public void setBirdthday(Date Birdthdayvalue) {
         this.Birdthday = Birdthdayvalue;
     }
 
-    public java.sql.Date getBirdthday() {
+    public Date getBirdthday() {
         return this.Birdthday;
     }
 
-    private java.sql.Timestamp CreateTime;
 
-    public void setCreateTime(java.sql.Timestamp CreateTimevalue) {
-        this.CreateTime = CreateTimevalue;
-    }
-
-    public java.sql.Timestamp getCreateTime() {
-        return this.CreateTime;
-    }
-
-    private java.sql.Timestamp UpdateTime;
-
-    public void setUpdateTime(java.sql.Timestamp UpdateTimevalue) {
-        this.UpdateTime = UpdateTimevalue;
-    }
-
-    public java.sql.Timestamp getUpdateTime() {
-        return this.UpdateTime;
-    }
 }

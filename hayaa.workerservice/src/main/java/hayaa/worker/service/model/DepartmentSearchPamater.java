@@ -1,15 +1,11 @@
 package hayaa.worker.service.model;
 
-import hayaa.basemodel.model.GridPager.PagerTotal;
 import hayaa.basemodel.model.PamaterOperationType;
-import hayaa.basemodel.model.BaseData;
 import hayaa.basemodel.model.SearchPamaterMariadbBase;
 
-import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
-public class DepartmentSearchPamater extends SearchPamaterMariadbBase implements PagerTotal {
+public class DepartmentSearchPamater extends SearchPamaterMariadbBase  {
     private Integer DepartmentId;
 
     public void setDepartmentId(Integer DepartmentIdvalue) {
@@ -92,6 +88,93 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase implements
                 break;
             case StringIn:
                 sql = "DepartmentId in('" + String.join("','", (CharSequence) this.DepartmentIdList) + "')";
+                break;
+        }
+        return sql;
+    }
+
+    private Integer CompanyId;
+
+    public void setCompanyId(Integer CompanyIdvalue, PamaterOperationType equal) {
+        this.CompanyId = CompanyIdvalue;
+    }
+
+    public Integer getCompanyId() {
+        return this.CompanyId;
+    }
+
+    private List<Integer> CompanyIdList;
+
+    public void setCompanyIdList(List<Integer> CompanyIdvalue) {
+        this.CompanyIdList = CompanyIdvalue;
+    }
+
+    public List<Integer> getCompanyIdList() {
+        return this.CompanyIdList;
+    }
+
+    private Integer CompanyIdMax;
+
+    public void setCompanyIdMax(Integer CompanyIdvalue) {
+        this.CompanyIdMax = CompanyIdvalue;
+    }
+
+    public Integer getCompanyIdMax() {
+        return this.CompanyIdMax;
+    }
+
+    private Integer CompanyIdMin;
+
+    public void setCompanyIdMin(Integer CompanyIdvalue) {
+        this.CompanyIdMin = CompanyIdvalue;
+    }
+
+    public Integer getCompanyIdMin() {
+        return this.CompanyIdMin;
+    }
+
+    public void setCompanyId(Integer max, Integer min) {
+        this.CompanyIdMax = max;
+        this.CompanyIdMin = min;
+        this.CompanyIdPOT = PamaterOperationType.Between;
+    }
+
+    private PamaterOperationType CompanyIdPOT;
+
+    public void SetCompanyId(Integer info, PamaterOperationType pot) {
+        this.CompanyId = info;
+        this.CompanyIdPOT = pot;
+    }
+
+    private String GetCompanyIdSqlForSharp() {
+        String sql = "";
+        switch (CompanyIdPOT) {
+            case Between:
+                sql = "CompanyId between :CompanyIdMin to :CompanyIdMax";
+                break;
+            case StringContains:
+                sql = "CompanyId like '%:CompanyId%'";
+                break;
+            case Equal:
+                sql = "CompanyId=:CompanyId";
+                break;
+            case GreaterEqual:
+                sql = "CompanyId>=:CompanyId";
+                break;
+            case GreaterThan:
+                sql = "CompanyId>:CompanyId";
+                break;
+            case LessEqual:
+                sql = "CompanyId<=:CompanyId";
+                break;
+            case LessThan:
+                sql = "CompanyId<=:CompanyId";
+                break;
+            case In:
+                sql = "CompanyId in(" + String.join(",", (CharSequence) this.CompanyIdList) + ")";
+                break;
+            case StringIn:
+                sql = "CompanyId in('" + String.join("','", (CharSequence) this.CompanyIdList) + "')";
                 break;
         }
         return sql;

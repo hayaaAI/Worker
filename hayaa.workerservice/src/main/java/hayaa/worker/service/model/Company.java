@@ -1,6 +1,7 @@
 package hayaa.worker.service.model;
 
 import hayaa.basemodel.model.BaseData;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,6 +14,7 @@ public class Company extends BaseData implements Serializable {
     private String companyCode;
     private String companyFullName;
     private String companyName;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date birdthday;
 
     public Integer getCompanyId() {
