@@ -1,15 +1,11 @@
 package hayaa.worker.service.model;
 
-import hayaa.basemodel.model.GridPager.PagerTotal;
 import hayaa.basemodel.model.PamaterOperationType;
-import hayaa.basemodel.model.BaseData;
 import hayaa.basemodel.model.SearchPamaterMariadbBase;
 
-import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
-public class CompanySearchPamater extends SearchPamaterMariadbBase implements PagerTotal {
+public class CompanySearchPamater extends SearchPamaterMariadbBase  {
     private Integer CompanyId;
 
     public void setCompanyId(Integer CompanyIdvalue) {

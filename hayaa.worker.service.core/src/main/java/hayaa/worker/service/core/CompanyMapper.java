@@ -1,6 +1,7 @@
 package hayaa.worker.service.core;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import hayaa.worker.service.model.Company;
 import org.apache.ibatis.annotations.*;
 
@@ -19,8 +20,10 @@ public interface CompanyMapper {
     Boolean delete(@Param("ids") String ids);
     @Select("select * from Company  where companyId=#{Id}")
     Company get(int Id);
-    @Select("select * from Company  where ${whereSql}")
+    @Select("select * from Company ${whereSql}")
     List<Company> getList(@Param("whereSql") String whereSql);
-    @Select("select * from Company  where ${whereSql}")
-    Page<Company> getPager(@Param("whereSql") String whereSql);
+//    @Select("select * from Company  where ${whereSql}")
+//    List<Company> getPager(@Param("whereSql") String whereSql);
+//    @Select("select * from Company")
+//    List<Company> test();
 }

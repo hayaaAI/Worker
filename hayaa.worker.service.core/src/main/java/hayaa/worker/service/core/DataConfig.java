@@ -3,6 +3,13 @@ package hayaa.worker.service.core;
 import java.util.Map;
 
 public class DataConfig {
-   public static Map<String,Object> DbConfig=ConfigHelper.getInstance().getDataConfig(DefineTable.DatabaseName);
+    private Map<String, Object> DbConfig = null;
 
+    public DataConfig() {
+        DbConfig = ConfigHelper.getInstance().getDataConfig(DefineTable.DatabaseName);
+    }
+
+    public Map<String, Object> getConfig() {
+        return DbConfig;
+    }
 }

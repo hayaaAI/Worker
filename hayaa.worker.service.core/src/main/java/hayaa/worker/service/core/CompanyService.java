@@ -1,5 +1,7 @@
 package hayaa.worker.service.core;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import hayaa.basemodel.model.FunctionListResult;
 import hayaa.basemodel.model.FunctionOpenResult;
 import hayaa.basemodel.model.FunctionResult;
@@ -9,9 +11,10 @@ import hayaa.worker.service.ICompanyService;
 import hayaa.worker.service.model.Company;
 import hayaa.worker.service.model.CompanySearchPamater;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service("companyService")
 public class CompanyService implements ICompanyService {
     @Autowired
     private CompanyMapper companyMapper;
@@ -42,7 +45,13 @@ public class CompanyService implements ICompanyService {
 
     @Override
     public GridPager<Company> GetPager(GridPagerPamater<CompanySearchPamater> gridPagerPamater) {
-        GridPager<Company> r=null;//companyMapper.GetGridPager(gridPagerPamater);
+        PageHelper.orderBy("companyId desc");
+        Page pageInfo=PageHelper.startPage(gridPagerPamater.getCurrent(), gridPagerPamater.getPageSize());
+        String whereSql=gridPagerPamater.getSearchPamater().CreateWhereSql();
+        List<Company>  dalResult= companyMapper.getList(whereSql);
+        GridPager<Company> r=new GridPager<>(gridPagerPamater.getCurrent(),gridPagerPamater.getPageSize());//companyMapper.GetGridPager(gridPagerPamater);
+        r.setData(dalResult);
+        r.setTotal((int)pageInfo.getTotal());
         return r;
     }
 
@@ -56,7 +65,7 @@ public class CompanyService implements ICompanyService {
     @Override
     public FunctionListResult<Company> GetList(CompanySearchPamater companySearchPamater) {
         FunctionListResult<Company> r=new FunctionListResult<Company>();
-       // r.setData(companyMapper.GetList(companySearchPamater));
+        r.setData(companyMapper.getList(companySearchPamater.CreateWhereSql()));
         return r;
     }
 }

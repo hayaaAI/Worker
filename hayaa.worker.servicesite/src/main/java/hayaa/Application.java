@@ -13,8 +13,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 public class Application extends DataConfig{
     public static void main(String[] args) throws Exception {
         AppRoot.StartApp();
+        DataConfig dataConfig=new DataConfig();
         SpringApplication app=new SpringApplication(Application.class);
-        app.setDefaultProperties(DataConfig.DbConfig);
+        app.setDefaultProperties(dataConfig.getConfig());
         app.run(args);
     }
 
