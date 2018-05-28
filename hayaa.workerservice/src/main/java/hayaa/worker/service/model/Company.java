@@ -5,6 +5,9 @@ import hayaa.basemodel.model.BaseData;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 代码效率工具生成，此文件不要手动修改
+ */
 public class Company extends BaseData implements Serializable {
     private Integer companyId;
     private String companyCode;

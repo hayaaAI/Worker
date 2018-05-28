@@ -9,263 +9,263 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class CompanySearchPamater extends SearchPamaterMariadbBase implements PagerTotal {
-    private Integer CompanyId;
+public class DepartmentSearchPamater extends SearchPamaterMariadbBase implements PagerTotal {
+    private Integer DepartmentId;
 
-    public void setCompanyId(Integer CompanyIdvalue) {
-        this.CompanyId = CompanyIdvalue;
+    public void setDepartmentId(Integer DepartmentIdvalue) {
+        this.DepartmentId = DepartmentIdvalue;
     }
 
-    public Integer getCompanyId() {
-        return this.CompanyId;
+    public Integer getDepartmentId() {
+        return this.DepartmentId;
     }
 
-    private List<Integer> CompanyIdList;
+    private List<Integer> DepartmentIdList;
 
-    public void setCompanyIdList(List<Integer> CompanyIdvalue) {
-        this.CompanyIdList = CompanyIdvalue;
+    public void setDepartmentIdList(List<Integer> DepartmentIdvalue) {
+        this.DepartmentIdList = DepartmentIdvalue;
     }
 
-    public List<Integer> getCompanyIdList() {
-        return this.CompanyIdList;
+    public List<Integer> getDepartmentIdList() {
+        return this.DepartmentIdList;
     }
 
-    private Integer CompanyIdMax;
+    private Integer DepartmentIdMax;
 
-    public void setCompanyIdMax(Integer CompanyIdvalue) {
-        this.CompanyIdMax = CompanyIdvalue;
+    public void setDepartmentIdMax(Integer DepartmentIdvalue) {
+        this.DepartmentIdMax = DepartmentIdvalue;
     }
 
-    public Integer getCompanyIdMax() {
-        return this.CompanyIdMax;
+    public Integer getDepartmentIdMax() {
+        return this.DepartmentIdMax;
     }
 
-    private Integer CompanyIdMin;
+    private Integer DepartmentIdMin;
 
-    public void setCompanyIdMin(Integer CompanyIdvalue) {
-        this.CompanyIdMin = CompanyIdvalue;
+    public void setDepartmentIdMin(Integer DepartmentIdvalue) {
+        this.DepartmentIdMin = DepartmentIdvalue;
     }
 
-    public Integer getCompanyIdMin() {
-        return this.CompanyIdMin;
+    public Integer getDepartmentIdMin() {
+        return this.DepartmentIdMin;
     }
 
-    public void setCompanyId(Integer max, Integer min) {
-        this.CompanyIdMax = max;
-        this.CompanyIdMin = min;
-        this.CompanyIdPOT = PamaterOperationType.Between;
+    public void setDepartmentId(Integer max, Integer min) {
+        this.DepartmentIdMax = max;
+        this.DepartmentIdMin = min;
+        this.DepartmentIdPOT = PamaterOperationType.Between;
     }
 
-    private PamaterOperationType CompanyIdPOT;
+    private PamaterOperationType DepartmentIdPOT;
 
-    public void SetCompanyId(Integer info, PamaterOperationType pot) {
-        this.CompanyId = info;
-        this.CompanyIdPOT = pot;
+    public void SetDepartmentId(Integer info, PamaterOperationType pot) {
+        this.DepartmentId = info;
+        this.DepartmentIdPOT = pot;
     }
 
-    private String GetCompanyIdSqlForSharp() {
+    private String GetDepartmentIdSqlForSharp() {
         String sql = "";
-        switch (CompanyIdPOT) {
+        switch (DepartmentIdPOT) {
             case Between:
-                sql = "CompanyId between :CompanyIdMin to :CompanyIdMax";
+                sql = "DepartmentId between :DepartmentIdMin to :DepartmentIdMax";
                 break;
             case StringContains:
-                sql = "CompanyId like '%:CompanyId%'";
+                sql = "DepartmentId like '%:DepartmentId%'";
                 break;
             case Equal:
-                sql = "CompanyId=:CompanyId";
+                sql = "DepartmentId=:DepartmentId";
                 break;
             case GreaterEqual:
-                sql = "CompanyId>=:CompanyId";
+                sql = "DepartmentId>=:DepartmentId";
                 break;
             case GreaterThan:
-                sql = "CompanyId>:CompanyId";
+                sql = "DepartmentId>:DepartmentId";
                 break;
             case LessEqual:
-                sql = "CompanyId<=:CompanyId";
+                sql = "DepartmentId<=:DepartmentId";
                 break;
             case LessThan:
-                sql = "CompanyId<=:CompanyId";
+                sql = "DepartmentId<=:DepartmentId";
                 break;
             case In:
-                sql = "CompanyId in(" + String.join(",", (CharSequence) this.CompanyIdList) + ")";
+                sql = "DepartmentId in(" + String.join(",", (CharSequence) this.DepartmentIdList) + ")";
                 break;
             case StringIn:
-                sql = "CompanyId in('" + String.join("','", (CharSequence) this.CompanyIdList) + "')";
+                sql = "DepartmentId in('" + String.join("','", (CharSequence) this.DepartmentIdList) + "')";
                 break;
         }
         return sql;
     }
 
-    private String CompanyCode;
+    private String Name;
 
-    public void setCompanyCode(String CompanyCodevalue) {
-        this.CompanyCode = CompanyCodevalue;
+    public void setName(String Namevalue) {
+        this.Name = Namevalue;
     }
 
-    public String getCompanyCode() {
-        return this.CompanyCode;
+    public String getName() {
+        return this.Name;
     }
 
-    private List<String> CompanyCodeList;
+    private List<String> NameList;
 
-    public void setCompanyCodeList(List<String> CompanyCodevalue) {
-        this.CompanyCodeList = CompanyCodevalue;
+    public void setNameList(List<String> Namevalue) {
+        this.NameList = Namevalue;
     }
 
-    public List<String> getCompanyCodeList() {
-        return this.CompanyCodeList;
+    public List<String> getNameList() {
+        return this.NameList;
     }
 
-    private PamaterOperationType CompanyCodePOT;
+    private PamaterOperationType NamePOT;
 
-    public void SetCompanyCode(String info, PamaterOperationType pot) {
-        this.CompanyCode = info;
-        this.CompanyCodePOT = pot;
+    public void SetName(String info, PamaterOperationType pot) {
+        this.Name = info;
+        this.NamePOT = pot;
     }
 
-    private String GetCompanyCodeSqlForSharp() {
+    private String GetNameSqlForSharp() {
         String sql = "";
-        switch (CompanyCodePOT) {
+        switch (NamePOT) {
             case StringContains:
-                sql = "CompanyCode like '%:CompanyCode%'";
+                sql = "Name like '%:Name%'";
                 break;
             case Equal:
-                sql = "CompanyCode=:CompanyCode";
+                sql = "Name=:Name";
                 break;
             case GreaterEqual:
-                sql = "CompanyCode>=:CompanyCode";
+                sql = "Name>=:Name";
                 break;
             case GreaterThan:
-                sql = "CompanyCode>:CompanyCode";
+                sql = "Name>:Name";
                 break;
             case LessEqual:
-                sql = "CompanyCode<=:CompanyCode";
+                sql = "Name<=:Name";
                 break;
             case LessThan:
-                sql = "CompanyCode<=:CompanyCode";
+                sql = "Name<=:Name";
                 break;
             case In:
-                sql = "CompanyCode in(" + String.join(",", (CharSequence) this.CompanyCodeList) + ")";
+                sql = "Name in(" + String.join(",", (CharSequence) this.NameList) + ")";
                 break;
             case StringIn:
-                sql = "CompanyCode in('" + String.join("','", (CharSequence) this.CompanyCodeList) + "')";
+                sql = "Name in('" + String.join("','", (CharSequence) this.NameList) + "')";
                 break;
         }
         return sql;
     }
 
-    private String CompanyFullName;
+    private String Title;
 
-    public void setCompanyFullName(String CompanyFullNamevalue) {
-        this.CompanyFullName = CompanyFullNamevalue;
+    public void setTitle(String Titlevalue) {
+        this.Title = Titlevalue;
     }
 
-    public String getCompanyFullName() {
-        return this.CompanyFullName;
+    public String getTitle() {
+        return this.Title;
     }
 
-    private List<String> CompanyFullNameList;
+    private List<String> TitleList;
 
-    public void setCompanyFullNameList(List<String> CompanyFullNamevalue) {
-        this.CompanyFullNameList = CompanyFullNamevalue;
+    public void setTitleList(List<String> Titlevalue) {
+        this.TitleList = Titlevalue;
     }
 
-    public List<String> getCompanyFullNameList() {
-        return this.CompanyFullNameList;
+    public List<String> getTitleList() {
+        return this.TitleList;
     }
 
-    private PamaterOperationType CompanyFullNamePOT;
+    private PamaterOperationType TitlePOT;
 
-    public void SetCompanyFullName(String info, PamaterOperationType pot) {
-        this.CompanyFullName = info;
-        this.CompanyFullNamePOT = pot;
+    public void SetTitle(String info, PamaterOperationType pot) {
+        this.Title = info;
+        this.TitlePOT = pot;
     }
 
-    private String GetCompanyFullNameSqlForSharp() {
+    private String GetTitleSqlForSharp() {
         String sql = "";
-        switch (CompanyFullNamePOT) {
+        switch (TitlePOT) {
             case StringContains:
-                sql = "CompanyFullName like '%:CompanyFullName%'";
+                sql = "Title like '%:Title%'";
                 break;
             case Equal:
-                sql = "CompanyFullName=:CompanyFullName";
+                sql = "Title=:Title";
                 break;
             case GreaterEqual:
-                sql = "CompanyFullName>=:CompanyFullName";
+                sql = "Title>=:Title";
                 break;
             case GreaterThan:
-                sql = "CompanyFullName>:CompanyFullName";
+                sql = "Title>:Title";
                 break;
             case LessEqual:
-                sql = "CompanyFullName<=:CompanyFullName";
+                sql = "Title<=:Title";
                 break;
             case LessThan:
-                sql = "CompanyFullName<=:CompanyFullName";
+                sql = "Title<=:Title";
                 break;
             case In:
-                sql = "CompanyFullName in(" + String.join(",", (CharSequence) this.CompanyFullNameList) + ")";
+                sql = "Title in(" + String.join(",", (CharSequence) this.TitleList) + ")";
                 break;
             case StringIn:
-                sql = "CompanyFullName in('" + String.join("','", (CharSequence) this.CompanyFullNameList) + "')";
+                sql = "Title in('" + String.join("','", (CharSequence) this.TitleList) + "')";
                 break;
         }
         return sql;
     }
 
-    private String CompanyName;
+    private String Remark;
 
-    public void setCompanyName(String CompanyNamevalue) {
-        this.CompanyName = CompanyNamevalue;
+    public void setRemark(String Remarkvalue) {
+        this.Remark = Remarkvalue;
     }
 
-    public String getCompanyName() {
-        return this.CompanyName;
+    public String getRemark() {
+        return this.Remark;
     }
 
-    private List<String> CompanyNameList;
+    private List<String> RemarkList;
 
-    public void setCompanyNameList(List<String> CompanyNamevalue) {
-        this.CompanyNameList = CompanyNamevalue;
+    public void setRemarkList(List<String> Remarkvalue) {
+        this.RemarkList = Remarkvalue;
     }
 
-    public List<String> getCompanyNameList() {
-        return this.CompanyNameList;
+    public List<String> getRemarkList() {
+        return this.RemarkList;
     }
 
-    private PamaterOperationType CompanyNamePOT;
+    private PamaterOperationType RemarkPOT;
 
-    public void SetCompanyName(String info, PamaterOperationType pot) {
-        this.CompanyName = info;
-        this.CompanyNamePOT = pot;
+    public void SetRemark(String info, PamaterOperationType pot) {
+        this.Remark = info;
+        this.RemarkPOT = pot;
     }
 
-    private String GetCompanyNameSqlForSharp() {
+    private String GetRemarkSqlForSharp() {
         String sql = "";
-        switch (CompanyNamePOT) {
+        switch (RemarkPOT) {
             case StringContains:
-                sql = "CompanyName like '%:CompanyName%'";
+                sql = "Remark like '%:Remark%'";
                 break;
             case Equal:
-                sql = "CompanyName=:CompanyName";
+                sql = "Remark=:Remark";
                 break;
             case GreaterEqual:
-                sql = "CompanyName>=:CompanyName";
+                sql = "Remark>=:Remark";
                 break;
             case GreaterThan:
-                sql = "CompanyName>:CompanyName";
+                sql = "Remark>:Remark";
                 break;
             case LessEqual:
-                sql = "CompanyName<=:CompanyName";
+                sql = "Remark<=:Remark";
                 break;
             case LessThan:
-                sql = "CompanyName<=:CompanyName";
+                sql = "Remark<=:Remark";
                 break;
             case In:
-                sql = "CompanyName in(" + String.join(",", (CharSequence) this.CompanyNameList) + ")";
+                sql = "Remark in(" + String.join(",", (CharSequence) this.RemarkList) + ")";
                 break;
             case StringIn:
-                sql = "CompanyName in('" + String.join("','", (CharSequence) this.CompanyNameList) + "')";
+                sql = "Remark in('" + String.join("','", (CharSequence) this.RemarkList) + "')";
                 break;
         }
         return sql;

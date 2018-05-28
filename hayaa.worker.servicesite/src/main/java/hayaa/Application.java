@@ -1,14 +1,21 @@
 package hayaa;
 
 import hayaa.serviceplatform.client.AppRoot;
+import hayaa.worker.service.core.DataConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 
-@SpringBootApplication
-public class Application {
+@SpringBootApplication(exclude = {
+        DataSourceAutoConfiguration.class
+})
+public class Application extends DataConfig{
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(Application.class,args);
         AppRoot.StartApp();
+        SpringApplication app=new SpringApplication(Application.class);
+        app.setDefaultProperties(DataConfig.DbConfig);
+        app.run(args);
     }
+
 }
