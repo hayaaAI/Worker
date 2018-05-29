@@ -17,6 +17,7 @@
                 <template slot-scope="scope">
                     <el-popover trigger="hover" placement="top">
                         <p>部门名: {{ scope.row.name }}</p>
+                        <p>上级部门Id: {{ scope.row.parentId }}</p>
                         <p>注册日期: {{ scope.row.birdthday }}</p>
                         <p>备注: {{ scope.row.remark }}</p>
                         <div slot="reference" class="name-wrapper">
@@ -55,6 +56,7 @@
             </el-pagination>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -79,7 +81,7 @@
         methods: {
             getPager: function(page) {
                 var that = this;
-                httphelper.authedpostform(urls.department_pager_url, {"page": page, "size": 10,companyId:that.companyId},
+                httphelper.authedpostform(urls.department_pager_url, {"page": page, "size": 10,"companyId":that.companyId},
                     function (data) {
                         that.tableData = data.data;
                         that.pagerData.totalPage = data.total / data.pageSize;

@@ -1,10 +1,16 @@
 <template>
     <el-container>
-        <el-header><navimenu></navimenu></el-header>
+        <el-header>
+            <navimenu></navimenu>
+        </el-header>
         <el-container>
-            <el-aside width="240px" height="600px"><leftment></leftment></el-aside>
+            <el-aside width="240px">
+                <leftment></leftment>
+            </el-aside>
             <el-container>
-                <el-main><router-view></router-view></el-main>
+                <el-main style="height: 580px">
+                    <router-view></router-view>
+                </el-main>
                 <el-footer>Footer</el-footer>
             </el-container>
         </el-container>
@@ -14,20 +20,21 @@
 <script>
     import LeftMenu from './LeftMenu.vue'
     import NaviMenu from './NaviMenu.vue'
+
     export default {
         name: "Main",
-        created:function(){
-            //this.$router.push("/home/index");
+        created: function () {
+            this.$router.push("/home/index");
         },
-        components:{
-            "navimenu":NaviMenu,
-            "leftment":LeftMenu
+        components: {
+            "navimenu": NaviMenu,
+            "leftment": LeftMenu
         }
     }
 </script>
 
 <style scoped>
-     .el-footer {
+    .el-footer {
         background-color: #B3C0D1;
         color: #333;
         text-align: center;
@@ -35,13 +42,10 @@
     }
 
     .el-aside {
-        background-color: #D3DCE6;
         color: #333;
         text-align: center;
         line-height: 200px;
     }
-
-
 
     body > .el-container {
         margin-bottom: 40px;

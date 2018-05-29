@@ -36,7 +36,7 @@
             return {
                 ruleForm: {
                     departmentId: 0,
-                    parentId:0,
+                    parentId:null,
                     title: '',
                     name: '',
                     birdthday:'',

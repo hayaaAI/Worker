@@ -42,6 +42,7 @@
             <el-table-column label="操作">
                 <template slot-scope="scope">
                     <el-button size="mini" @click="edit(scope.row.companyId)">编辑</el-button>
+                    <el-button size="mini" @click="scan(scope.row.companyId)">总览</el-button>
                     <el-button size="mini" @click="editDepartment(scope.row.companyId)">部门管理</el-button>
                     <el-button size="mini" type="danger" @click="del(scope.row.companyId)">删除</el-button>
                 </template>
@@ -91,6 +92,9 @@
             },
             edit: function(id) {
                 this.$router.push("/home/companyedit/" + id);
+            },
+            scan: function(id) {
+                this.$router.push("/home/companyinfo/" + id);
             },
             editDepartment: function(id) {
                 this.$router.push("/home/departmentlist/" + id);

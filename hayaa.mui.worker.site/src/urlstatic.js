@@ -24,6 +24,7 @@ const urls={
     job_del_url:baseUrl.worker+"job/del",
     person_pager_url:baseUrl.worker+"person/pager",
     person_get_url:baseUrl.worker+"person/get",
+    person_list_url:baseUrl.worker+"person/list",
     person_add_url:baseUrl.worker+"person/add",
     person_edit_url:baseUrl.worker+"person/edit",
     person_del_url:baseUrl.worker+"person/del",
