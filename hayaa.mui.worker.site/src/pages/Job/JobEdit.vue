@@ -21,11 +21,13 @@
     import urls from '../../urlstatic'
 
     export default {
-        name: "DepartmentEdit",
+        name: "JobEdit",
         data: function() {
             return {
+                companyId:0,
                 ruleForm: {
-                    appId: 0,
+                    jobId: 0,
+                    departmentId:0,
                     title: '',
                     name: ''
                 },
@@ -43,6 +45,8 @@
             };
         },
         created: function () {
+            this.companyId= this.$route.params.cid;
+            this.ruleForm.departmentId= this.$route.params.did;
             var id = this.$route.params.id;
             if (id>0) {
                 this.get(id);
@@ -50,26 +54,31 @@
         },
         methods: {
             back: function() {
-                this.$router.push("/home/applist");
+                this.$router.push("/home/joblist/"+this.companyId+"/"+this.ruleForm.departmentId);
             },
             get: function(id) {
                 var that = this;
-                httphelper.authedpostform(urls.appGetUrl, {"id": id},
+                httphelper.authedpostform(urls.job_get_url, {"id": id},
                     function (data) {
-                        that.ruleForm = data;
+                        that.ruleForm = {
+                            jobId: data.jobId,
+                            departmentId:data.departmentId,
+                            title: data.title,
+                            name: data.name
+                        };
                     });
             },
             submitForm: function(formName) {
                 var that = this;
                 this.$refs[formName].validate(function(valid) {
                     if (valid) {
-                        if (that.ruleForm.appId == 0) {
-                            httphelper.authedpostform(urls.appAddUrl, that.ruleForm,
+                        if (that.ruleForm.jobId == 0) {
+                            httphelper.authedpostform(urls.job_add_url, that.ruleForm,
                                 function (data) {
                                     that.back();
                                 });
                         } else {
-                            httphelper.authedpostform(urls.appEditUrl, that.ruleForm,
+                            httphelper.authedpostform(urls.job_edit_url, that.ruleForm,
                                 function (data) {
                                     if (data)
                                         that.$notify.success("操作成功");

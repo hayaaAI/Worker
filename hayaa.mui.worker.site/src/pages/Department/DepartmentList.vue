@@ -95,11 +95,11 @@
                 this.$router.push("/home/departmentedit/" +this.companyId+"/"+ id);
             },
             editJob: function(id) {
-                this.$router.push("/home/departmentedit/" +this.companyId+"/"+ id);
+                this.$router.push("/home/joblist/" +this.companyId+"/"+ id);
             },
             del: function(id) {
                 var that = this;
-                httphelper.authedpostform(urls.appDeleteUrl, {"appId": id},
+                httphelper.authedpostform(urls.department_del_url, {"id": id},
                     function (data) {
                         if(data)
                         that.$notify.success("操作成功");

@@ -8,14 +8,19 @@
                     label="ID"
                     width="80">
                 <template slot-scope="scope">
-                    <span>{{ scope.row.appId }}</span>
+                    <span>{{ scope.row.jobId }}</span>
                 </template>
             </el-table-column>
             <el-table-column
                     label="名称"
                     width="120">
                 <template slot-scope="scope">
-                    <span>{{ scope.row.title }}</span>
+                    <el-popover trigger="hover" placement="top">
+                        <p>部门名: {{ scope.row.name }}</p>
+                        <div slot="reference" class="name-wrapper">
+                            <el-tag size="medium">{{ scope.row.title }}</el-tag>
+                        </div>
+                    </el-popover>
                 </template>
             </el-table-column>
             <el-table-column
@@ -34,9 +39,8 @@
             </el-table-column>
             <el-table-column label="操作">
                 <template slot-scope="scope">
-                    <el-button size="mini" @click="edit(scope.row.appId)">编辑</el-button>
-                    <el-button size="mini" @click="editConfig(scope.row.appId)">配置管理</el-button>
-                    <el-button size="mini" type="danger" @click="del(scope.row.appId)">删除</el-button>
+                    <el-button size="mini" @click="edit(scope.row.jobId)">编辑</el-button>
+                    <el-button size="mini" type="danger" @click="del(scope.row.jobId)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -55,12 +59,16 @@
     import urls from '../../urlstatic'
 
     export default {
-        name: "DepartmentList",
+        name: "JobList",
         created: function () {
+            this.companyId= this.$route.params.cid;
+            this.departmentId= this.$route.params.did;
             this.getPager(1);
         },
         data: function () {
             return {
+                companyId:0,
+                departmentId:0,
                 pagerData: {
                     totalPage: 0
                 },
@@ -70,7 +78,7 @@
         methods: {
             getPager: function(page) {
                 var that = this;
-                httphelper.authedpostform(urls.appPagerUrl, {"page": page, "size": 10},
+                httphelper.authedpostform(urls.job_pager_url, {"page": page, "size": 10,"departmentId":that.departmentId},
                     function (data) {
                         that.tableData = data.data;
                         that.pagerData.totalPage = data.total / data.pageSize;
@@ -80,20 +88,18 @@
                     })
             },
             add: function() {
-                this.$router.push("/home/appedit");
+                this.$router.push("/home/jobedit/"+this.companyId+"/"+this.departmentId);
             },
             edit: function(id) {
-                this.$router.push("/home/appedit/" + id);
-            },
-            editConfig: function(id) {
-                this.$router.push("/home/appconfiglist/" + id);
+                this.$router.push("/home/jobedit/"+this.companyId+"/"+this.departmentId+"/"+id);
             },
             del: function(id) {
                 var that = this;
-                httphelper.authedpostform(urls.appDeleteUrl, {"appId": id},
+                httphelper.authedpostform(urls.job_del_url, {"id": id},
                     function (data) {
                         if(data)
                         that.$notify.success("操作成功");
+                        that.getPager(1);
                     });
             }
         }

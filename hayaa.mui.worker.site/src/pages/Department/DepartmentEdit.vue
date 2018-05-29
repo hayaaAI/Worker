@@ -7,6 +7,9 @@
             <el-form-item label="可见名称" prop="title">
                 <el-input v-model="ruleForm.title"></el-input>
             </el-form-item>
+            <el-form-item label="上级Id">
+                <el-input v-model="ruleForm.parentId"></el-input>
+            </el-form-item>
             <el-form-item label="成立日期">
                 <el-date-picker type="date" placeholder="成立日期" v-model="ruleForm.birdthday"
                                 style="width: 100%;"></el-date-picker>
@@ -33,6 +36,7 @@
             return {
                 ruleForm: {
                     departmentId: 0,
+                    parentId:0,
                     title: '',
                     name: '',
                     birdthday:'',
@@ -66,7 +70,15 @@
                 var that = this;
                 httphelper.authedpostform(urls.department_get_url, {"id": id},
                     function (data) {
-                        that.ruleForm = data;
+                        that.ruleForm = {
+                            departmentId: data.departmentId,
+                            parentId:data.parentId,
+                            title: data.title,
+                            name: data.name,
+                            birdthday:data.birdthday,
+                            companyId:data.companyId,
+                            remark:data.remark
+                        };
                     });
             },
             submitForm: function(formName) {
