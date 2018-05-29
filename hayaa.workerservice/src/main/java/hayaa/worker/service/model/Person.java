@@ -1,6 +1,9 @@
 package hayaa.worker.service.model;
 
 import hayaa.basemodel.model.BaseData;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class Person extends BaseData {
     private Integer PersonId;
@@ -32,54 +35,36 @@ public class Person extends BaseData {
     public Boolean getSex() {
         return this.Sex;
     }
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date Birthday;
 
-    private java.sql.Date Birthday;
-
-    public void setBirthday(java.sql.Date Birthdayvalue) {
+    public void setBirthday(Date Birthdayvalue) {
         this.Birthday = Birthdayvalue;
     }
 
-    public java.sql.Date getBirthday() {
+    public Date getBirthday() {
         return this.Birthday;
     }
 
-    private String ID;
-
-    public void setID(String IDvalue) {
-        this.ID = IDvalue;
+    public String getId() {
+        return id;
     }
 
-    public String getID() {
-        return this.ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    private Boolean IsAI;
+    private String id;
 
-    public void setIsAI(Boolean IsAIvalue) {
-        this.IsAI = IsAIvalue;
+
+
+    public Boolean getAi() {
+        return ai;
     }
 
-    public Boolean getIsAI() {
-        return this.IsAI;
+    public void setAi(Boolean ai) {
+        this.ai = ai;
     }
 
-    private java.sql.Timestamp CreateTime;
-
-    public void setCreateTime(java.sql.Timestamp CreateTimevalue) {
-        this.CreateTime = CreateTimevalue;
-    }
-
-    public java.sql.Timestamp getCreateTime() {
-        return this.CreateTime;
-    }
-
-    private java.sql.Timestamp UpdateTime;
-
-    public void setUpdateTime(java.sql.Timestamp UpdateTimevalue) {
-        this.UpdateTime = UpdateTimevalue;
-    }
-
-    public java.sql.Timestamp getUpdateTime() {
-        return this.UpdateTime;
-    }
+    private Boolean ai;
 }

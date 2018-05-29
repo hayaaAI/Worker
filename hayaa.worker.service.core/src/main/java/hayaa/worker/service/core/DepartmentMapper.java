@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 @Mapper
 interface DepartmentMapper {
-    @Insert("insert into Department(CompanyId,Name,Title,Remark,Birdthday) values(#{department.CompanyId},#{department.Name},#{department.Title},#{department.Remark},#{department.Birdthday});")
+    @Insert("insert into Department(ParentId,CompanyId,Name,Title,Remark,Birdthday) values(#{department.ParentId},#{department.CompanyId},#{department.Name},#{department.Title},#{department.Remark},#{department.Birdthday});")
     @Options(useGeneratedKeys = true, keyProperty = "department.DepartmentId")
     void insert(@Param("department") Department department);
 
-    @Update("update Department set CompanyId=#{department.CompanyId},Name=#{department.Name},Title=#{department.Title},Remark=#{department.Remark},Birdthday=#{department.Birdthday} where DepartmentId=#{department.DepartmentId}")
+    @Update("update Department set ParentId=#{department.ParentId},CompanyId=#{department.CompanyId},Name=#{department.Name},Title=#{department.Title},Remark=#{department.Remark},Birdthday=#{department.Birdthday} where DepartmentId=#{department.DepartmentId}")
     Boolean update(@Param("department") Department department);
 
     @Delete("delete from Department where departmentId in (${ids})")

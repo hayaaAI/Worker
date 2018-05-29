@@ -1,12 +1,15 @@
 package hayaa.worker.servicecontroller;
 
 
-import hayaa.basemodel.model.*;
+import hayaa.basemodel.model.FunctionOpenResult;
+import hayaa.basemodel.model.FunctionResult;
 import hayaa.basemodel.model.GridPager.GridPager;
 import hayaa.basemodel.model.GridPager.GridPagerPamater;
-import hayaa.worker.service.core.DepartmentService;
-import hayaa.worker.service.model.Department;
-import hayaa.worker.service.model.DepartmentSearchPamater;
+import hayaa.basemodel.model.PamaterOperationType;
+import hayaa.basemodel.model.TransactionResult;
+import hayaa.worker.service.core.JobService;
+import hayaa.worker.service.model.Job;
+import hayaa.worker.service.model.JobSearchPamater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,23 +22,23 @@ import java.util.List;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping(value = "/department/", method = {RequestMethod.GET, RequestMethod.POST})
+@RequestMapping(value = "/job/", method = {RequestMethod.GET, RequestMethod.POST})
 @CrossOrigin(origins = "*",allowCredentials="true")
-public class DepartmentController {
+public class JobController {
 
     @Autowired
-    private DepartmentService departmentService;
+    private JobService jobService;
 
     @RequestMapping(value = "pager")
-    public TransactionResult<GridPager<Department>> GetPager(int page, int size,int companyId) {
-        TransactionResult<GridPager<Department>> result = new TransactionResult<GridPager<Department>>();
-        GridPagerPamater<DepartmentSearchPamater> pamater = new GridPagerPamater<>();
-        DepartmentSearchPamater dsp=  new DepartmentSearchPamater();
-        dsp.setCompanyId(companyId,PamaterOperationType.Equal);
+    public TransactionResult<GridPager<Job>> GetPager(int page, int size, int departmentId) {
+        TransactionResult<GridPager<Job>> result = new TransactionResult<GridPager<Job>>();
+        GridPagerPamater<JobSearchPamater> pamater = new GridPagerPamater<>();
+        JobSearchPamater dsp=  new JobSearchPamater();
+        dsp.setDepartmentId(departmentId,PamaterOperationType.Equal);
         pamater.setSearchPamater(dsp);
         pamater.setCurrent(page);
         pamater.setPageSize(size);
-        GridPager<Department> serviceReusult = departmentService.GetPager(pamater);
+        GridPager<Job> serviceReusult = jobService.GetPager(pamater);
         if (serviceReusult.isActionResult() && serviceReusult.isHavingData()) {
             result.setData(serviceReusult);
         } else {
@@ -45,23 +48,9 @@ public class DepartmentController {
         return result;
     }
     @RequestMapping(value = "get")
-    public TransactionResult<Department> Get(int id) {
-        TransactionResult<Department> result = new TransactionResult<Department>();
-        FunctionResult<Department> serviceResult = departmentService.Get(id);
-        if(serviceResult.isActionResult()&&serviceResult.isHavingData()){
-            result.setData(serviceResult.getData());
-        }else {
-            result.setCode(103);
-            result.setMessage("暂无数据");
-        }
-        return result;
-    }
-    @RequestMapping(value = "list")
-    public TransactionResult<List<Department>> GetList(int companyId) {
-        TransactionResult<List<Department>> result = new TransactionResult<List<Department>>();
-        DepartmentSearchPamater searchPamater=new DepartmentSearchPamater();
-        searchPamater.setCompanyId(companyId,PamaterOperationType.Equal);
-        FunctionListResult<Department> serviceResult = departmentService.GetList(searchPamater);
+    public TransactionResult<Job> Get(int id) {
+        TransactionResult<Job> result = new TransactionResult<Job>();
+        FunctionResult<Job> serviceResult = jobService.Get(id);
         if(serviceResult.isActionResult()&&serviceResult.isHavingData()){
             result.setData(serviceResult.getData());
         }else {
@@ -71,9 +60,9 @@ public class DepartmentController {
         return result;
     }
     @RequestMapping(value = "add")
-    public TransactionResult<Department> Add(Department info) {
-        TransactionResult<Department> result = new TransactionResult<Department>();
-        FunctionResult<Department> serviceResult = departmentService.Create(info);
+    public TransactionResult<Job> Add(Job info) {
+        TransactionResult<Job> result = new TransactionResult<Job>();
+        FunctionResult<Job> serviceResult = jobService.Create(info);
         if(serviceResult.isActionResult()&&serviceResult.isHavingData()){
             result.setData(serviceResult.getData());
         }else {
@@ -83,9 +72,9 @@ public class DepartmentController {
         return result;
     }
     @RequestMapping(value = "edit")
-    public TransactionResult<Boolean> Edit(Department info) {
+    public TransactionResult<Boolean> Edit(Job info) {
         TransactionResult<Boolean> result = new TransactionResult<Boolean>();
-        FunctionOpenResult<Boolean> serviceResult = departmentService.UpdateByID(info);
+        FunctionOpenResult<Boolean> serviceResult = jobService.UpdateByID(info);
         if(serviceResult.isActionResult()){
             result.setData(serviceResult.getData());
         }else {
@@ -99,7 +88,7 @@ public class DepartmentController {
         TransactionResult<Boolean> result = new TransactionResult<Boolean>();
         List<Integer> ids=new ArrayList<>();
         ids.add(id);
-        FunctionOpenResult<Boolean> serviceResult = departmentService.DeleteByID(ids);
+        FunctionOpenResult<Boolean> serviceResult = jobService.DeleteByID(ids);
         if(serviceResult.isActionResult()){
             result.setData(serviceResult.getData());
         }else {

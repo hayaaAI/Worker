@@ -3,9 +3,10 @@ package hayaa.worker.service.model;
 import hayaa.basemodel.model.PamaterOperationType;
 import hayaa.basemodel.model.SearchPamaterMariadbBase;
 
+import java.util.Date;
 import java.util.List;
 
-public class PersonSearchPamater extends SearchPamaterMariadbBase  {
+public class PersonSearchPamater extends SearchPamaterMariadbBase {
     private Integer PersonId;
 
     public void setPersonId(Integer PersonIdvalue) {
@@ -238,47 +239,47 @@ public class PersonSearchPamater extends SearchPamaterMariadbBase  {
         return sql;
     }
 
-    private java.sql.Date Birthday;
+    private Date Birthday;
 
-    public void setBirthday(java.sql.Date Birthdayvalue) {
+    public void setBirthday(Date Birthdayvalue) {
         this.Birthday = Birthdayvalue;
     }
 
-    public java.sql.Date getBirthday() {
+    public Date getBirthday() {
         return this.Birthday;
     }
 
-    private List<java.sql.Date> BirthdayList;
+    private List<Date> BirthdayList;
 
-    public void setBirthdayList(List<java.sql.Date> Birthdayvalue) {
+    public void setBirthdayList(List<Date> Birthdayvalue) {
         this.BirthdayList = Birthdayvalue;
     }
 
-    public List<java.sql.Date> getBirthdayList() {
+    public List<Date> getBirthdayList() {
         return this.BirthdayList;
     }
 
-    private java.sql.Date BirthdayMax;
+    private Date BirthdayMax;
 
-    public void setBirthdayMax(java.sql.Date Birthdayvalue) {
+    public void setBirthdayMax(Date Birthdayvalue) {
         this.BirthdayMax = Birthdayvalue;
     }
 
-    public java.sql.Date getBirthdayMax() {
+    public Date getBirthdayMax() {
         return this.BirthdayMax;
     }
 
-    private java.sql.Date BirthdayMin;
+    private Date BirthdayMin;
 
-    public void setBirthdayMin(java.sql.Date Birthdayvalue) {
+    public void setBirthdayMin(Date Birthdayvalue) {
         this.BirthdayMin = Birthdayvalue;
     }
 
-    public java.sql.Date getBirthdayMin() {
+    public Date getBirthdayMin() {
         return this.BirthdayMin;
     }
 
-    public void setBirthday(java.sql.Date max, java.sql.Date min) {
+    public void setBirthday(Date max, Date min) {
         this.BirthdayMax = max;
         this.BirthdayMin = min;
         this.BirthdayPOT = PamaterOperationType.Between;
@@ -286,7 +287,7 @@ public class PersonSearchPamater extends SearchPamaterMariadbBase  {
 
     private PamaterOperationType BirthdayPOT;
 
-    public void SetBirthday(java.sql.Date info, PamaterOperationType pot) {
+    public void SetBirthday(Date info, PamaterOperationType pot) {
         this.Birthday = info;
         this.BirthdayPOT = pot;
     }
@@ -470,47 +471,47 @@ public class PersonSearchPamater extends SearchPamaterMariadbBase  {
         return sql;
     }
 
-    private java.sql.Timestamp CreateTime;
+    private Date CreateTime;
 
-    public void setCreateTime(java.sql.Timestamp CreateTimevalue) {
+    public void setCreateTime(Date CreateTimevalue) {
         this.CreateTime = CreateTimevalue;
     }
 
-    public java.sql.Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return this.CreateTime;
     }
 
-    private List<java.sql.Timestamp> CreateTimeList;
+    private List<Date> CreateTimeList;
 
-    public void setCreateTimeList(List<java.sql.Timestamp> CreateTimevalue) {
+    public void setCreateTimeList(List<Date> CreateTimevalue) {
         this.CreateTimeList = CreateTimevalue;
     }
 
-    public List<java.sql.Timestamp> getCreateTimeList() {
+    public List<Date> getCreateTimeList() {
         return this.CreateTimeList;
     }
 
-    private java.sql.Timestamp CreateTimeMax;
+    private Date CreateTimeMax;
 
-    public void setCreateTimeMax(java.sql.Timestamp CreateTimevalue) {
+    public void setCreateTimeMax(Date CreateTimevalue) {
         this.CreateTimeMax = CreateTimevalue;
     }
 
-    public java.sql.Timestamp getCreateTimeMax() {
+    public Date getCreateTimeMax() {
         return this.CreateTimeMax;
     }
 
-    private java.sql.Timestamp CreateTimeMin;
+    private Date CreateTimeMin;
 
-    public void setCreateTimeMin(java.sql.Timestamp CreateTimevalue) {
+    public void setCreateTimeMin(Date CreateTimevalue) {
         this.CreateTimeMin = CreateTimevalue;
     }
 
-    public java.sql.Timestamp getCreateTimeMin() {
+    public Date getCreateTimeMin() {
         return this.CreateTimeMin;
     }
 
-    public void setCreateTime(java.sql.Timestamp max, java.sql.Timestamp min) {
+    public void setCreateTime(Date max, Date min) {
         this.CreateTimeMax = max;
         this.CreateTimeMin = min;
         this.CreateTimePOT = PamaterOperationType.Between;
@@ -518,7 +519,7 @@ public class PersonSearchPamater extends SearchPamaterMariadbBase  {
 
     private PamaterOperationType CreateTimePOT;
 
-    public void SetCreateTime(java.sql.Timestamp info, PamaterOperationType pot) {
+    public void SetCreateTime(Date info, PamaterOperationType pot) {
         this.CreateTime = info;
         this.CreateTimePOT = pot;
     }
@@ -557,47 +558,47 @@ public class PersonSearchPamater extends SearchPamaterMariadbBase  {
         return sql;
     }
 
-    private java.sql.Timestamp UpdateTime;
+    private Date UpdateTime;
 
-    public void setUpdateTime(java.sql.Timestamp UpdateTimevalue) {
+    public void setUpdateTime(Date UpdateTimevalue) {
         this.UpdateTime = UpdateTimevalue;
     }
 
-    public java.sql.Timestamp getUpdateTime() {
+    public Date getUpdateTime() {
         return this.UpdateTime;
     }
 
-    private List<java.sql.Timestamp> UpdateTimeList;
+    private List<Date> UpdateTimeList;
 
-    public void setUpdateTimeList(List<java.sql.Timestamp> UpdateTimevalue) {
+    public void setUpdateTimeList(List<Date> UpdateTimevalue) {
         this.UpdateTimeList = UpdateTimevalue;
     }
 
-    public List<java.sql.Timestamp> getUpdateTimeList() {
+    public List<Date> getUpdateTimeList() {
         return this.UpdateTimeList;
     }
 
-    private java.sql.Timestamp UpdateTimeMax;
+    private Date UpdateTimeMax;
 
-    public void setUpdateTimeMax(java.sql.Timestamp UpdateTimevalue) {
+    public void setUpdateTimeMax(Date UpdateTimevalue) {
         this.UpdateTimeMax = UpdateTimevalue;
     }
 
-    public java.sql.Timestamp getUpdateTimeMax() {
+    public Date getUpdateTimeMax() {
         return this.UpdateTimeMax;
     }
 
-    private java.sql.Timestamp UpdateTimeMin;
+    private Date UpdateTimeMin;
 
-    public void setUpdateTimeMin(java.sql.Timestamp UpdateTimevalue) {
+    public void setUpdateTimeMin(Date UpdateTimevalue) {
         this.UpdateTimeMin = UpdateTimevalue;
     }
 
-    public java.sql.Timestamp getUpdateTimeMin() {
+    public Date getUpdateTimeMin() {
         return this.UpdateTimeMin;
     }
 
-    public void setUpdateTime(java.sql.Timestamp max, java.sql.Timestamp min) {
+    public void setUpdateTime(Date max, Date min) {
         this.UpdateTimeMax = max;
         this.UpdateTimeMin = min;
         this.UpdateTimePOT = PamaterOperationType.Between;
@@ -605,7 +606,7 @@ public class PersonSearchPamater extends SearchPamaterMariadbBase  {
 
     private PamaterOperationType UpdateTimePOT;
 
-    public void SetUpdateTime(java.sql.Timestamp info, PamaterOperationType pot) {
+    public void SetUpdateTime(Date info, PamaterOperationType pot) {
         this.UpdateTime = info;
         this.UpdateTimePOT = pot;
     }

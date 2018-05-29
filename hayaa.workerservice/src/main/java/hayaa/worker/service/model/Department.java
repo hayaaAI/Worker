@@ -16,6 +16,16 @@ public class Department extends BaseData {
         return this.DepartmentId;
     }
 
+    private Integer ParentId;
+
+    public void setParentId(Integer ParentIdvalue) {
+        this.ParentId = ParentIdvalue;
+    }
+
+    public Integer getParentId() {
+        return this.ParentId;
+    }
+
     private Integer CompanyId;
 
     public void setCompanyId(Integer CompanyIdvalue) {

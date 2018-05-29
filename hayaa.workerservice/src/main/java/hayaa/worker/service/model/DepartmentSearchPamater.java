@@ -5,7 +5,7 @@ import hayaa.basemodel.model.SearchPamaterMariadbBase;
 
 import java.util.List;
 
-public class DepartmentSearchPamater extends SearchPamaterMariadbBase  {
+public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
     private Integer DepartmentId;
 
     public void setDepartmentId(Integer DepartmentIdvalue) {
@@ -88,6 +88,93 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase  {
                 break;
             case StringIn:
                 sql = "DepartmentId in('" + String.join("','", (CharSequence) this.DepartmentIdList) + "')";
+                break;
+        }
+        return sql;
+    }
+
+    private Integer ParentId;
+
+    public void setParentId(Integer ParentIdvalue) {
+        this.ParentId = ParentIdvalue;
+    }
+
+    public Integer getParentId() {
+        return this.ParentId;
+    }
+
+    private List<Integer> ParentIdList;
+
+    public void setParentIdList(List<Integer> ParentIdvalue) {
+        this.ParentIdList = ParentIdvalue;
+    }
+
+    public List<Integer> getParentIdList() {
+        return this.ParentIdList;
+    }
+
+    private Integer ParentIdMax;
+
+    public void setParentIdMax(Integer ParentIdvalue) {
+        this.ParentIdMax = ParentIdvalue;
+    }
+
+    public Integer getParentIdMax() {
+        return this.ParentIdMax;
+    }
+
+    private Integer ParentIdMin;
+
+    public void setParentIdMin(Integer ParentIdvalue) {
+        this.ParentIdMin = ParentIdvalue;
+    }
+
+    public Integer getParentIdMin() {
+        return this.ParentIdMin;
+    }
+
+    public void setParentId(Integer max, Integer min) {
+        this.ParentIdMax = max;
+        this.ParentIdMin = min;
+        this.ParentIdPOT = PamaterOperationType.Between;
+    }
+
+    private PamaterOperationType ParentIdPOT;
+
+    public void SetParentId(Integer info, PamaterOperationType pot) {
+        this.ParentId = info;
+        this.ParentIdPOT = pot;
+    }
+
+    private String GetParentIdSqlForSharp() {
+        String sql = "";
+        switch (ParentIdPOT) {
+            case Between:
+                sql = "ParentId between :ParentIdMin to :ParentIdMax";
+                break;
+            case StringContains:
+                sql = "ParentId like '%:ParentId%'";
+                break;
+            case Equal:
+                sql = "ParentId=:ParentId";
+                break;
+            case GreaterEqual:
+                sql = "ParentId>=:ParentId";
+                break;
+            case GreaterThan:
+                sql = "ParentId>:ParentId";
+                break;
+            case LessEqual:
+                sql = "ParentId<=:ParentId";
+                break;
+            case LessThan:
+                sql = "ParentId<=:ParentId";
+                break;
+            case In:
+                sql = "ParentId in(" + String.join(",", (CharSequence) this.ParentIdList) + ")";
+                break;
+            case StringIn:
+                sql = "ParentId in('" + String.join("','", (CharSequence) this.ParentIdList) + "')";
                 break;
         }
         return sql;
