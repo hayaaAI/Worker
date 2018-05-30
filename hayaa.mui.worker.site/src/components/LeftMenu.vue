@@ -12,6 +12,9 @@
                             <el-menu-item index="1-1">
                                 <router-link to="/home/companylist" class="menuitem">组织管理</router-link>
                             </el-menu-item>
+                            <el-menu-item index="1-2">
+                                <router-link to="/home/userlist" class="menuitem">人员管理</router-link>
+                            </el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                 </el-menu>
@@ -36,6 +39,6 @@
     }
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 239px;
-        min-height: 580px;
+        min-height: 600px;
     }
 </style>

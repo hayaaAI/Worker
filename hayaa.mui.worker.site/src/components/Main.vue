@@ -8,7 +8,7 @@
                 <leftment></leftment>
             </el-aside>
             <el-container>
-                <el-main style="height: 580px">
+                <el-main style="height: 590px">
                     <router-view></router-view>
                 </el-main>
                 <el-footer>Footer</el-footer>

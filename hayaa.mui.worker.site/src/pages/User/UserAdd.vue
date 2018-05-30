@@ -1,8 +1,27 @@
 <template>
     <div style="width: 400px;margin-left: 15%">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="姓名" prop="name">
+                <el-input v-model="ruleForm.name"></el-input>
+            </el-form-item>
             <el-form-item label="昵称" prop="nickName">
                 <el-input v-model="ruleForm.nickName"></el-input>
+            </el-form-item>
+            <el-form-item label="性别">
+                <el-radio-group v-model="ruleForm.sex">
+                    <el-radio label="false">男</el-radio>
+                    <el-radio label="true">女</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="生日">
+                <el-date-picker type="date" placeholder="生日" v-model="ruleForm.birdthday"
+                                style="width: 100%;"></el-date-picker>
+            </el-form-item>
+            <el-form-item label="身份证" prop="id">
+                <el-input v-model="ruleForm.id"></el-input>
+            </el-form-item>
+            <el-form-item label="AI员工">
+                <el-switch v-model="ruleForm.ai"></el-switch>
             </el-form-item>
             <el-form-item label="照片">
                 <el-upload
@@ -29,10 +48,16 @@
     import urls from '../../urlstatic'
 
     export default {
-        name: "UserEdit",
+        name: "UserAdd",
         data: function () {
             return {
                 ruleForm: {
+                    personId: 0,
+                    birthday: '',
+                    name: '',
+                    id: "",
+                    sex: "false",
+                    ai: false,
                     userId: 0,
                     nickName: '',
                     personId: '',
@@ -40,6 +65,14 @@
                     photo: ''
                 },
                 rules: {
+                    name: [
+                        {required: true, message: '请输入姓名', trigger: 'blur'},
+                        {min: 1, max: 200, message: '长度在 1 到 200 个字符', trigger: 'blur'}
+                    ],
+                    id: [
+                        {required: true, message: '请输入身份证', trigger: 'blur'},
+                        {min: 1, max: 18, message: '长度在 1 到 18 个字符', trigger: 'blur'}
+                    ],
                     nickName: [
                         {required: true, message: '请输入昵称', trigger: 'blur'},
                         {min: 1, max: 50, message: '长度在 1 到 50 个字符', trigger: 'blur'}
@@ -49,27 +82,10 @@
             };
         },
         created: function () {
-            var id = this.$route.params.id;
-            if (id > 0) {
-                this.get(id);
-            }
         },
         methods: {
             back: function () {
                 this.$router.push("/home/userlist");
-            },
-            get: function (id) {
-                var that = this;
-                httphelper.authedpostform(urls.user_get_url, {"id": id},
-                    function (data) {
-                        that.ruleForm = {
-                            userId: data.userId,
-                            nickName: data.nickName,
-                            personId: data.personId,
-                            personGroup: data.personGroup,
-                            photo: data.photo
-                        };
-                    });
             },
             handleAvatarSuccess(res, file) {
                 this.ruleForm.photo = URL.createObjectURL(file.raw);
@@ -83,16 +99,15 @@
                 if (!isLt2M) {
                     this.$message.error('上传头像图片大小不能超过 2MB!');
                 }
-                return isJPG&&sLt2M;
+                return isJPG&&isLt2M;
             },
             submitForm: function (formName) {
                 var that = this;
                 this.$refs[formName].validate(function (valid) {
                     if (valid) {
-                        httphelper.authedpostform(urls.user_edit_url, that.ruleForm,
+                        httphelper.authedpostform(urls.user_add_url, that.ruleForm,
                             function (data) {
-                                if (data)
-                                    that.$notify.success("操作成功");
+                                that.back();
                             });
                     } else {
                         return false;
@@ -114,9 +129,11 @@
         position: relative;
         overflow: hidden;
     }
+
     .avatar-uploader .el-upload:hover {
         border-color: #409EFF;
     }
+
     .avatar-uploader-icon {
         font-size: 28px;
         color: #8c939d;
@@ -125,6 +142,7 @@
         line-height: 178px;
         text-align: center;
     }
+
     .avatar {
         width: 178px;
         height: 178px;

@@ -2,6 +2,7 @@
     <div style="margin-left: 25px">
         <div style="float: right">
             <el-button type="primary" @click="add">添加</el-button>
+            <el-button type="primary" @click="back">返回</el-button>
         </div>
         <el-table :data="tableData">
             <el-table-column
@@ -76,6 +77,9 @@
             }
         },
         methods: {
+            back:function(){
+                this.$router.push("/home/departmentlist/" + this.companyId);
+            },
             getPager: function(page) {
                 var that = this;
                 httphelper.authedpostform(urls.job_pager_url, {"page": page, "size": 10,"departmentId":that.departmentId},

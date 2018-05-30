@@ -10,8 +10,10 @@ import DepartmentList from './pages/Department/DepartmentList.vue'
 import DepartmentEdit from './pages/Department/DepartmentEdit.vue'
 import JobList from './pages/Job/JobList.vue'
 import JobEdit from './pages/Job/JobEdit.vue'
+import SetJob from './pages/Job/SetJob.vue'
 import PersonEdit from './pages/Person/PersonEdit.vue'
 import UserList from './pages/User/UserList.vue'
+import UserAdd from './pages/User/UserAdd.vue'
 import UserEdit from './pages/User/UserEdit.vue'
 
 const router = new VueRouter({
@@ -30,9 +32,11 @@ const router = new VueRouter({
                 {path: "departmentedit/:cid/:id?", component: DepartmentEdit},
                 {path: "joblist/:cid/:did", component: JobList},
                 {path: "jobedit/:cid/:did/:id?", component: JobEdit},
+                {path: "setjob/:id", component: SetJob},
                 {path: "personedit/:cid/:did/:id?", component: PersonEdit},
                 {path: "userlist/", component: UserList},
-                {path: "useredit/:id?", component: UserEdit}
+                {path: "useradd/", component: UserAdd},
+                {path: "useredit/:id", component: UserEdit}
             ]
         }
     ]
