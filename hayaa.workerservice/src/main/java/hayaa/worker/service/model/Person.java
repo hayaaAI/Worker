@@ -7,6 +7,12 @@ import java.util.Date;
 
 public class Person extends BaseData {
     private Integer PersonId;
+    private String Name;
+    private Boolean Sex;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date Birthday;
+    private String id;
+    private Boolean ai;
 
     public void setPersonId(Integer PersonIdvalue) {
         this.PersonId = PersonIdvalue;
@@ -16,7 +22,7 @@ public class Person extends BaseData {
         return this.PersonId;
     }
 
-    private String Name;
+
 
     public void setName(String Namevalue) {
         this.Name = Namevalue;
@@ -26,7 +32,7 @@ public class Person extends BaseData {
         return this.Name;
     }
 
-    private Boolean Sex;
+
 
     public void setSex(Boolean Sexvalue) {
         this.Sex = Sexvalue;
@@ -35,8 +41,7 @@ public class Person extends BaseData {
     public Boolean getSex() {
         return this.Sex;
     }
-    @DateTimeFormat(pattern ="yyyy-MM-dd")
-    private Date Birthday;
+
 
     public void setBirthday(Date Birthdayvalue) {
         this.Birthday = Birthdayvalue;
@@ -54,7 +59,6 @@ public class Person extends BaseData {
         this.id = id;
     }
 
-    private String id;
 
 
 
@@ -66,5 +70,5 @@ public class Person extends BaseData {
         this.ai = ai;
     }
 
-    private Boolean ai;
+
 }

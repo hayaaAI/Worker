@@ -31,7 +31,7 @@ public class DepartmentController {
         TransactionResult<GridPager<Department>> result = new TransactionResult<GridPager<Department>>();
         GridPagerPamater<DepartmentSearchPamater> pamater = new GridPagerPamater<>();
         DepartmentSearchPamater dsp=  new DepartmentSearchPamater();
-        dsp.setCompanyId(companyId,PamaterOperationType.Equal);
+        dsp.SetCompanyId(companyId,PamaterOperationType.Equal);
         pamater.setSearchPamater(dsp);
         pamater.setCurrent(page);
         pamater.setPageSize(size);
@@ -60,7 +60,7 @@ public class DepartmentController {
     public TransactionResult<List<Department>> GetList(int companyId) {
         TransactionResult<List<Department>> result = new TransactionResult<List<Department>>();
         DepartmentSearchPamater searchPamater=new DepartmentSearchPamater();
-        searchPamater.setCompanyId(companyId,PamaterOperationType.Equal);
+        searchPamater.SetCompanyId(companyId,PamaterOperationType.Equal);
         FunctionListResult<Department> serviceResult = departmentService.GetList(searchPamater);
         if(serviceResult.isActionResult()&&serviceResult.isHavingData()){
             result.setData(serviceResult.getData());

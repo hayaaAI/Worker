@@ -60,7 +60,7 @@ public class PersonSearchPamater extends SearchPamaterMariadbBase {
         this.PersonIdPOT = pot;
     }
 
-    private String GetPersonIdSqlForSharp() {
+    protected String GetPersonIdSqlForSharp() {
         String sql = "";
         switch (PersonIdPOT) {
             case Between:

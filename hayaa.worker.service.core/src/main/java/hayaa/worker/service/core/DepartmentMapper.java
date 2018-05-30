@@ -1,6 +1,7 @@
 package hayaa.worker.service.core;
 
 import hayaa.worker.service.model.Department;
+import hayaa.worker.service.model.DepartmentSearchPamater;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -19,6 +20,5 @@ interface DepartmentMapper {
     @Select("select * from Department where DepartmentId =#{Id}")
     Department get(int Id);
 
-    @Select("select * from Department ${whereSql}")
-    List<Department> getList(@Param("whereSql") String whereSql);
+    List<Department> getList(@Param("searchPamater") DepartmentSearchPamater searchPamater);
 }

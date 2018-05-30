@@ -19,6 +19,8 @@ import java.util.List;
 public class JobService implements IJobService {
     @Autowired
     private JobMapper jobMapper;
+    @Autowired
+    private Rel_Company_Department_Job_UserMapper rel_company_department_job_userMapper;
 
     @Override
     public FunctionResult<Job> Create(Job info) {
@@ -49,8 +51,7 @@ public class JobService implements IJobService {
     public GridPager<Job> GetPager(GridPagerPamater<JobSearchPamater> gridPagerPamater) {
         PageHelper.orderBy("JobId desc");
         Page pageInfo = PageHelper.startPage(gridPagerPamater.getCurrent(), gridPagerPamater.getPageSize());
-        String whereSql = gridPagerPamater.getSearchPamater().CreateWhereSql();
-        List<Job> dalResult = jobMapper.getList(whereSql);
+        List<Job> dalResult = jobMapper.getList(gridPagerPamater.getSearchPamater());
         GridPager<Job> r = new GridPager<>(gridPagerPamater.getCurrent(), gridPagerPamater.getPageSize());
         r.setData(dalResult);
         r.setTotal((int) pageInfo.getTotal());
@@ -67,7 +68,21 @@ public class JobService implements IJobService {
     @Override
     public FunctionListResult<Job> GetList(JobSearchPamater searchPamater) {
         FunctionListResult<Job> r = new FunctionListResult<Job>();
-        r.setData(jobMapper.getList(searchPamater.CreateWhereSql()));
+        r.setData(jobMapper.getList(searchPamater));
+        return r;
+    }
+
+    @Override
+    public FunctionOpenResult<Boolean> set(int companyId, int departmentId, int jobId,int userId) {
+        FunctionOpenResult<Boolean> r=new FunctionOpenResult<Boolean>();
+        Rel_Company_Department_Job_User info=new Rel_Company_Department_Job_User();
+        info.setCompanyId(companyId);
+        info.setUserId(userId);
+        info.setDepartmentId(departmentId);
+        info.setJobId(jobId);
+        rel_company_department_job_userMapper.deleteByUserId(userId);
+        rel_company_department_job_userMapper.insert(info);
+        r.setData(info.getId()>0);
         return r;
     }
 }

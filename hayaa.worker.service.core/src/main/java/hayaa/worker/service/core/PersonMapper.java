@@ -7,7 +7,9 @@ import java.util.List;
 
 @Mapper
 interface PersonMapper {
-    @Insert("insert into Person(Name,Sex,Birthday,ID,AI) values(#{person.Name},#{person.Sex},#{person.Birthday},#{person.id},#{person.ai});")
+    @Insert("insert into Person(Name,Sex,Birthday,ID,AI) " +
+            "select #{person.Name},#{person.Sex},#{person.Birthday},#{person.id},#{person.ai} from DUAL" +
+            " where not exists(select ID from Person where ID=#{person.id})")
     @Options(useGeneratedKeys = true, keyProperty = "person.PersonId")
     void insert(@Param("person") Person person);
 

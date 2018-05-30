@@ -50,7 +50,7 @@ public class DepartmentService implements IDepartmentService {
         PageHelper.orderBy("DepartmentId desc");
         Page pageInfo = PageHelper.startPage(gridPagerPamater.getCurrent(), gridPagerPamater.getPageSize());
         String whereSql = gridPagerPamater.getSearchPamater().CreateWhereSql();
-        List<Department> dalResult = departmentMapper.getList(whereSql);
+        List<Department> dalResult = departmentMapper.getList(gridPagerPamater.getSearchPamater());
         GridPager<Department> r = new GridPager<>(gridPagerPamater.getCurrent(), gridPagerPamater.getPageSize());
         r.setData(dalResult);
         r.setTotal((int) pageInfo.getTotal());
@@ -67,7 +67,7 @@ public class DepartmentService implements IDepartmentService {
     @Override
     public FunctionListResult<Department> GetList(DepartmentSearchPamater searchPamater) {
         FunctionListResult<Department> r = new FunctionListResult<Department>();
-        r.setData(departmentMapper.getList(searchPamater.CreateWhereSql()));
+        r.setData(departmentMapper.getList(searchPamater));
         return r;
     }
 }

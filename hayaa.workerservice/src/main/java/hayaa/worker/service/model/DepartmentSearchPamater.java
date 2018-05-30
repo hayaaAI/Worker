@@ -1,8 +1,11 @@
 package hayaa.worker.service.model;
 
 import hayaa.basemodel.model.PamaterOperationType;
+import hayaa.basemodel.model.BaseData;
 import hayaa.basemodel.model.SearchPamaterMariadbBase;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
@@ -59,35 +62,37 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
         this.DepartmentIdPOT = pot;
     }
 
-    private String GetDepartmentIdSqlForSharp() {
+    protected String getDepartmentIdSql() {
         String sql = "";
         switch (DepartmentIdPOT) {
             case Between:
-                sql = "DepartmentId between :DepartmentIdMin to :DepartmentIdMax";
+                sql = "DepartmentId between #{DepartmentId}Min to #{DepartmentId}Max";
                 break;
             case StringContains:
-                sql = "DepartmentId like '%:DepartmentId%'";
+                sql = "DepartmentId like '%#{DepartmentId}%'";
                 break;
             case Equal:
-                sql = "DepartmentId=:DepartmentId";
+                sql = "DepartmentId=#{DepartmentId}";
                 break;
             case GreaterEqual:
-                sql = "DepartmentId>=:DepartmentId";
+                sql = "DepartmentId>=#{DepartmentId}";
                 break;
             case GreaterThan:
-                sql = "DepartmentId>:DepartmentId";
+                sql = "DepartmentId>#{DepartmentId}";
                 break;
             case LessEqual:
-                sql = "DepartmentId<=:DepartmentId";
+                sql = "DepartmentId<=#{DepartmentId}";
                 break;
             case LessThan:
-                sql = "DepartmentId<=:DepartmentId";
+                sql = "DepartmentId<=#{DepartmentId}";
                 break;
             case In:
-                sql = "DepartmentId in(" + String.join(",", (CharSequence) this.DepartmentIdList) + ")";
+                String strArr = this.DepartmentIdList.toString().replace("[", "").replace("]", "");
+                sql = "DepartmentId in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "DepartmentId in('" + String.join("','", (CharSequence) this.DepartmentIdList) + "')";
+                String strList = this.DepartmentIdList.toString().replace("[", "").replace("]", "");
+                sql = "DepartmentId in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;
@@ -146,35 +151,37 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
         this.ParentIdPOT = pot;
     }
 
-    private String GetParentIdSqlForSharp() {
+    protected String getParentIdSql() {
         String sql = "";
         switch (ParentIdPOT) {
             case Between:
-                sql = "ParentId between :ParentIdMin to :ParentIdMax";
+                sql = "ParentId between #{ParentId}Min to #{ParentId}Max";
                 break;
             case StringContains:
-                sql = "ParentId like '%:ParentId%'";
+                sql = "ParentId like '%#{ParentId}%'";
                 break;
             case Equal:
-                sql = "ParentId=:ParentId";
+                sql = "ParentId=#{ParentId}";
                 break;
             case GreaterEqual:
-                sql = "ParentId>=:ParentId";
+                sql = "ParentId>=#{ParentId}";
                 break;
             case GreaterThan:
-                sql = "ParentId>:ParentId";
+                sql = "ParentId>#{ParentId}";
                 break;
             case LessEqual:
-                sql = "ParentId<=:ParentId";
+                sql = "ParentId<=#{ParentId}";
                 break;
             case LessThan:
-                sql = "ParentId<=:ParentId";
+                sql = "ParentId<=#{ParentId}";
                 break;
             case In:
-                sql = "ParentId in(" + String.join(",", (CharSequence) this.ParentIdList) + ")";
+                String strArr = this.ParentIdList.toString().replace("[", "").replace("]", "");
+                sql = "ParentId in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "ParentId in('" + String.join("','", (CharSequence) this.ParentIdList) + "')";
+                String strList = this.ParentIdList.toString().replace("[", "").replace("]", "");
+                sql = "ParentId in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;
@@ -182,7 +189,7 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
 
     private Integer CompanyId;
 
-    public void setCompanyId(Integer CompanyIdvalue, PamaterOperationType equal) {
+    public void setCompanyId(Integer CompanyIdvalue) {
         this.CompanyId = CompanyIdvalue;
     }
 
@@ -233,35 +240,37 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
         this.CompanyIdPOT = pot;
     }
 
-    private String GetCompanyIdSqlForSharp() {
+    protected String getCompanyIdSql() {
         String sql = "";
         switch (CompanyIdPOT) {
             case Between:
-                sql = "CompanyId between :CompanyIdMin to :CompanyIdMax";
+                sql = "CompanyId between #{CompanyId}Min to #{CompanyId}Max";
                 break;
             case StringContains:
-                sql = "CompanyId like '%:CompanyId%'";
+                sql = "CompanyId like '%#{CompanyId}%'";
                 break;
             case Equal:
-                sql = "CompanyId=:CompanyId";
+                sql = "CompanyId=#{CompanyId}";
                 break;
             case GreaterEqual:
-                sql = "CompanyId>=:CompanyId";
+                sql = "CompanyId>=#{CompanyId}";
                 break;
             case GreaterThan:
-                sql = "CompanyId>:CompanyId";
+                sql = "CompanyId>#{CompanyId}";
                 break;
             case LessEqual:
-                sql = "CompanyId<=:CompanyId";
+                sql = "CompanyId<=#{CompanyId}";
                 break;
             case LessThan:
-                sql = "CompanyId<=:CompanyId";
+                sql = "CompanyId<=#{CompanyId}";
                 break;
             case In:
-                sql = "CompanyId in(" + String.join(",", (CharSequence) this.CompanyIdList) + ")";
+                String strArr = this.CompanyIdList.toString().replace("[", "").replace("]", "");
+                sql = "CompanyId in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "CompanyId in('" + String.join("','", (CharSequence) this.CompanyIdList) + "')";
+                String strList = this.CompanyIdList.toString().replace("[", "").replace("]", "");
+                sql = "CompanyId in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;
@@ -294,32 +303,34 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
         this.NamePOT = pot;
     }
 
-    private String GetNameSqlForSharp() {
+    protected String getNameSql() {
         String sql = "";
         switch (NamePOT) {
             case StringContains:
-                sql = "Name like '%:Name%'";
+                sql = "Name like '%#{Name}%'";
                 break;
             case Equal:
-                sql = "Name=:Name";
+                sql = "Name=#{Name}";
                 break;
             case GreaterEqual:
-                sql = "Name>=:Name";
+                sql = "Name>=#{Name}";
                 break;
             case GreaterThan:
-                sql = "Name>:Name";
+                sql = "Name>#{Name}";
                 break;
             case LessEqual:
-                sql = "Name<=:Name";
+                sql = "Name<=#{Name}";
                 break;
             case LessThan:
-                sql = "Name<=:Name";
+                sql = "Name<=#{Name}";
                 break;
             case In:
-                sql = "Name in(" + String.join(",", (CharSequence) this.NameList) + ")";
+                String strArr = this.NameList.toString().replace("[", "").replace("]", "");
+                sql = "Name in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "Name in('" + String.join("','", (CharSequence) this.NameList) + "')";
+                String strList = this.NameList.toString().replace("[", "").replace("]", "");
+                sql = "Name in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;
@@ -352,32 +363,34 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
         this.TitlePOT = pot;
     }
 
-    private String GetTitleSqlForSharp() {
+    protected String getTitleSql() {
         String sql = "";
         switch (TitlePOT) {
             case StringContains:
-                sql = "Title like '%:Title%'";
+                sql = "Title like '%#{Title}%'";
                 break;
             case Equal:
-                sql = "Title=:Title";
+                sql = "Title=#{Title}";
                 break;
             case GreaterEqual:
-                sql = "Title>=:Title";
+                sql = "Title>=#{Title}";
                 break;
             case GreaterThan:
-                sql = "Title>:Title";
+                sql = "Title>#{Title}";
                 break;
             case LessEqual:
-                sql = "Title<=:Title";
+                sql = "Title<=#{Title}";
                 break;
             case LessThan:
-                sql = "Title<=:Title";
+                sql = "Title<=#{Title}";
                 break;
             case In:
-                sql = "Title in(" + String.join(",", (CharSequence) this.TitleList) + ")";
+                String strArr = this.TitleList.toString().replace("[", "").replace("]", "");
+                sql = "Title in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "Title in('" + String.join("','", (CharSequence) this.TitleList) + "')";
+                String strList = this.TitleList.toString().replace("[", "").replace("]", "");
+                sql = "Title in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;
@@ -410,78 +423,80 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
         this.RemarkPOT = pot;
     }
 
-    private String GetRemarkSqlForSharp() {
+    protected String getRemarkSql() {
         String sql = "";
         switch (RemarkPOT) {
             case StringContains:
-                sql = "Remark like '%:Remark%'";
+                sql = "Remark like '%#{Remark}%'";
                 break;
             case Equal:
-                sql = "Remark=:Remark";
+                sql = "Remark=#{Remark}";
                 break;
             case GreaterEqual:
-                sql = "Remark>=:Remark";
+                sql = "Remark>=#{Remark}";
                 break;
             case GreaterThan:
-                sql = "Remark>:Remark";
+                sql = "Remark>#{Remark}";
                 break;
             case LessEqual:
-                sql = "Remark<=:Remark";
+                sql = "Remark<=#{Remark}";
                 break;
             case LessThan:
-                sql = "Remark<=:Remark";
+                sql = "Remark<=#{Remark}";
                 break;
             case In:
-                sql = "Remark in(" + String.join(",", (CharSequence) this.RemarkList) + ")";
+                String strArr = this.RemarkList.toString().replace("[", "").replace("]", "");
+                sql = "Remark in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "Remark in('" + String.join("','", (CharSequence) this.RemarkList) + "')";
+                String strList = this.RemarkList.toString().replace("[", "").replace("]", "");
+                sql = "Remark in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;
     }
 
-    private java.sql.Date Birdthday;
+    private Date Birdthday;
 
-    public void setBirdthday(java.sql.Date Birdthdayvalue) {
+    public void setBirdthday(Date Birdthdayvalue) {
         this.Birdthday = Birdthdayvalue;
     }
 
-    public java.sql.Date getBirdthday() {
+    public Date getBirdthday() {
         return this.Birdthday;
     }
 
-    private List<java.sql.Date> BirdthdayList;
+    private List<Date> BirdthdayList;
 
-    public void setBirdthdayList(List<java.sql.Date> Birdthdayvalue) {
+    public void setBirdthdayList(List<Date> Birdthdayvalue) {
         this.BirdthdayList = Birdthdayvalue;
     }
 
-    public List<java.sql.Date> getBirdthdayList() {
+    public List<Date> getBirdthdayList() {
         return this.BirdthdayList;
     }
 
-    private java.sql.Date BirdthdayMax;
+    private Date BirdthdayMax;
 
-    public void setBirdthdayMax(java.sql.Date Birdthdayvalue) {
+    public void setBirdthdayMax(Date Birdthdayvalue) {
         this.BirdthdayMax = Birdthdayvalue;
     }
 
-    public java.sql.Date getBirdthdayMax() {
+    public Date getBirdthdayMax() {
         return this.BirdthdayMax;
     }
 
-    private java.sql.Date BirdthdayMin;
+    private Date BirdthdayMin;
 
-    public void setBirdthdayMin(java.sql.Date Birdthdayvalue) {
+    public void setBirdthdayMin(Date Birdthdayvalue) {
         this.BirdthdayMin = Birdthdayvalue;
     }
 
-    public java.sql.Date getBirdthdayMin() {
+    public Date getBirdthdayMin() {
         return this.BirdthdayMin;
     }
 
-    public void setBirdthday(java.sql.Date max, java.sql.Date min) {
+    public void setBirdthday(Date max, Date min) {
         this.BirdthdayMax = max;
         this.BirdthdayMin = min;
         this.BirdthdayPOT = PamaterOperationType.Between;
@@ -489,86 +504,88 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
 
     private PamaterOperationType BirdthdayPOT;
 
-    public void SetBirdthday(java.sql.Date info, PamaterOperationType pot) {
+    public void SetBirdthday(Date info, PamaterOperationType pot) {
         this.Birdthday = info;
         this.BirdthdayPOT = pot;
     }
 
-    private String GetBirdthdaySqlForSharp() {
+    protected String getBirdthdaySql() {
         String sql = "";
         switch (BirdthdayPOT) {
             case Between:
-                sql = "Birdthday between :BirdthdayMin to :BirdthdayMax";
+                sql = "Birdthday between #{Birdthday}Min to #{Birdthday}Max";
                 break;
             case StringContains:
-                sql = "Birdthday like '%:Birdthday%'";
+                sql = "Birdthday like '%#{Birdthday}%'";
                 break;
             case Equal:
-                sql = "Birdthday=:Birdthday";
+                sql = "Birdthday=#{Birdthday}";
                 break;
             case GreaterEqual:
-                sql = "Birdthday>=:Birdthday";
+                sql = "Birdthday>=#{Birdthday}";
                 break;
             case GreaterThan:
-                sql = "Birdthday>:Birdthday";
+                sql = "Birdthday>#{Birdthday}";
                 break;
             case LessEqual:
-                sql = "Birdthday<=:Birdthday";
+                sql = "Birdthday<=#{Birdthday}";
                 break;
             case LessThan:
-                sql = "Birdthday<=:Birdthday";
+                sql = "Birdthday<=#{Birdthday}";
                 break;
             case In:
-                sql = "Birdthday in(" + String.join(",", (CharSequence) this.BirdthdayList) + ")";
+                String strArr = this.BirdthdayList.toString().replace("[", "").replace("]", "");
+                sql = "Birdthday in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "Birdthday in('" + String.join("','", (CharSequence) this.BirdthdayList) + "')";
+                String strList = this.BirdthdayList.toString().replace("[", "").replace("]", "");
+                sql = "Birdthday in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;
     }
 
-    private java.sql.Timestamp CreateTime;
+    private Date CreateTime;
 
-    public void setCreateTime(java.sql.Timestamp CreateTimevalue) {
+    public void setCreateTime(Date CreateTimevalue) {
         this.CreateTime = CreateTimevalue;
     }
 
-    public java.sql.Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return this.CreateTime;
     }
 
-    private List<java.sql.Timestamp> CreateTimeList;
+    private List<Date> CreateTimeList;
 
-    public void setCreateTimeList(List<java.sql.Timestamp> CreateTimevalue) {
+    public void setCreateTimeList(List<Date> CreateTimevalue) {
         this.CreateTimeList = CreateTimevalue;
     }
 
-    public List<java.sql.Timestamp> getCreateTimeList() {
+    public List<Date> getCreateTimeList() {
         return this.CreateTimeList;
     }
 
-    private java.sql.Timestamp CreateTimeMax;
+    private Date CreateTimeMax;
 
-    public void setCreateTimeMax(java.sql.Timestamp CreateTimevalue) {
+    public void setCreateTimeMax(Date CreateTimevalue) {
         this.CreateTimeMax = CreateTimevalue;
     }
 
-    public java.sql.Timestamp getCreateTimeMax() {
+    public Date getCreateTimeMax() {
         return this.CreateTimeMax;
     }
 
-    private java.sql.Timestamp CreateTimeMin;
+    private Date CreateTimeMin;
 
-    public void setCreateTimeMin(java.sql.Timestamp CreateTimevalue) {
+    public void setCreateTimeMin(Date CreateTimevalue) {
         this.CreateTimeMin = CreateTimevalue;
     }
 
-    public java.sql.Timestamp getCreateTimeMin() {
+    public Date getCreateTimeMin() {
         return this.CreateTimeMin;
     }
 
-    public void setCreateTime(java.sql.Timestamp max, java.sql.Timestamp min) {
+    public void setCreateTime(Date max, Date min) {
         this.CreateTimeMax = max;
         this.CreateTimeMin = min;
         this.CreateTimePOT = PamaterOperationType.Between;
@@ -576,86 +593,88 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
 
     private PamaterOperationType CreateTimePOT;
 
-    public void SetCreateTime(java.sql.Timestamp info, PamaterOperationType pot) {
+    public void SetCreateTime(Date info, PamaterOperationType pot) {
         this.CreateTime = info;
         this.CreateTimePOT = pot;
     }
 
-    private String GetCreateTimeSqlForSharp() {
+    protected String getCreateTimeSql() {
         String sql = "";
         switch (CreateTimePOT) {
             case Between:
-                sql = "CreateTime between :CreateTimeMin to :CreateTimeMax";
+                sql = "CreateTime between #{CreateTime}Min to #{CreateTime}Max";
                 break;
             case StringContains:
-                sql = "CreateTime like '%:CreateTime%'";
+                sql = "CreateTime like '%#{CreateTime}%'";
                 break;
             case Equal:
-                sql = "CreateTime=:CreateTime";
+                sql = "CreateTime=#{CreateTime}";
                 break;
             case GreaterEqual:
-                sql = "CreateTime>=:CreateTime";
+                sql = "CreateTime>=#{CreateTime}";
                 break;
             case GreaterThan:
-                sql = "CreateTime>:CreateTime";
+                sql = "CreateTime>#{CreateTime}";
                 break;
             case LessEqual:
-                sql = "CreateTime<=:CreateTime";
+                sql = "CreateTime<=#{CreateTime}";
                 break;
             case LessThan:
-                sql = "CreateTime<=:CreateTime";
+                sql = "CreateTime<=#{CreateTime}";
                 break;
             case In:
-                sql = "CreateTime in(" + String.join(",", (CharSequence) this.CreateTimeList) + ")";
+                String strArr = this.CreateTimeList.toString().replace("[", "").replace("]", "");
+                sql = "CreateTime in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "CreateTime in('" + String.join("','", (CharSequence) this.CreateTimeList) + "')";
+                String strList = this.CreateTimeList.toString().replace("[", "").replace("]", "");
+                sql = "CreateTime in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;
     }
 
-    private java.sql.Timestamp UpdateTime;
+    private Date UpdateTime;
 
-    public void setUpdateTime(java.sql.Timestamp UpdateTimevalue) {
+    public void setUpdateTime(Date UpdateTimevalue) {
         this.UpdateTime = UpdateTimevalue;
     }
 
-    public java.sql.Timestamp getUpdateTime() {
+    public Date getUpdateTime() {
         return this.UpdateTime;
     }
 
-    private List<java.sql.Timestamp> UpdateTimeList;
+    private List<Date> UpdateTimeList;
 
-    public void setUpdateTimeList(List<java.sql.Timestamp> UpdateTimevalue) {
+    public void setUpdateTimeList(List<Date> UpdateTimevalue) {
         this.UpdateTimeList = UpdateTimevalue;
     }
 
-    public List<java.sql.Timestamp> getUpdateTimeList() {
+    public List<Date> getUpdateTimeList() {
         return this.UpdateTimeList;
     }
 
-    private java.sql.Timestamp UpdateTimeMax;
+    private Date UpdateTimeMax;
 
-    public void setUpdateTimeMax(java.sql.Timestamp UpdateTimevalue) {
+    public void setUpdateTimeMax(Date UpdateTimevalue) {
         this.UpdateTimeMax = UpdateTimevalue;
     }
 
-    public java.sql.Timestamp getUpdateTimeMax() {
+    public Date getUpdateTimeMax() {
         return this.UpdateTimeMax;
     }
 
-    private java.sql.Timestamp UpdateTimeMin;
+    private Date UpdateTimeMin;
 
-    public void setUpdateTimeMin(java.sql.Timestamp UpdateTimevalue) {
+    public void setUpdateTimeMin(Date UpdateTimevalue) {
         this.UpdateTimeMin = UpdateTimevalue;
     }
 
-    public java.sql.Timestamp getUpdateTimeMin() {
+    public Date getUpdateTimeMin() {
         return this.UpdateTimeMin;
     }
 
-    public void setUpdateTime(java.sql.Timestamp max, java.sql.Timestamp min) {
+    public void setUpdateTime(Date max, Date min) {
         this.UpdateTimeMax = max;
         this.UpdateTimeMin = min;
         this.UpdateTimePOT = PamaterOperationType.Between;
@@ -663,40 +682,42 @@ public class DepartmentSearchPamater extends SearchPamaterMariadbBase {
 
     private PamaterOperationType UpdateTimePOT;
 
-    public void SetUpdateTime(java.sql.Timestamp info, PamaterOperationType pot) {
+    public void SetUpdateTime(Date info, PamaterOperationType pot) {
         this.UpdateTime = info;
         this.UpdateTimePOT = pot;
     }
 
-    private String GetUpdateTimeSqlForSharp() {
+    protected String getUpdateTimeSql() {
         String sql = "";
         switch (UpdateTimePOT) {
             case Between:
-                sql = "UpdateTime between :UpdateTimeMin to :UpdateTimeMax";
+                sql = "UpdateTime between #{UpdateTime}Min to #{UpdateTime}Max";
                 break;
             case StringContains:
-                sql = "UpdateTime like '%:UpdateTime%'";
+                sql = "UpdateTime like '%#{UpdateTime}%'";
                 break;
             case Equal:
-                sql = "UpdateTime=:UpdateTime";
+                sql = "UpdateTime=#{UpdateTime}";
                 break;
             case GreaterEqual:
-                sql = "UpdateTime>=:UpdateTime";
+                sql = "UpdateTime>=#{UpdateTime}";
                 break;
             case GreaterThan:
-                sql = "UpdateTime>:UpdateTime";
+                sql = "UpdateTime>#{UpdateTime}";
                 break;
             case LessEqual:
-                sql = "UpdateTime<=:UpdateTime";
+                sql = "UpdateTime<=#{UpdateTime}";
                 break;
             case LessThan:
-                sql = "UpdateTime<=:UpdateTime";
+                sql = "UpdateTime<=#{UpdateTime}";
                 break;
             case In:
-                sql = "UpdateTime in(" + String.join(",", (CharSequence) this.UpdateTimeList) + ")";
+                String strArr = this.UpdateTimeList.toString().replace("[", "").replace("]", "");
+                sql = "UpdateTime in(" + String.join(",", strArr) + ")";
                 break;
             case StringIn:
-                sql = "UpdateTime in('" + String.join("','", (CharSequence) this.UpdateTimeList) + "')";
+                String strList = this.UpdateTimeList.toString().replace("[", "").replace("]", "");
+                sql = "UpdateTime in('" + String.join("','", strList) + "')";
                 break;
         }
         return sql;

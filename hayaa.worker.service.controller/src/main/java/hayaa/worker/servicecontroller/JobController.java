@@ -1,12 +1,9 @@
 package hayaa.worker.servicecontroller;
 
 
-import hayaa.basemodel.model.FunctionOpenResult;
-import hayaa.basemodel.model.FunctionResult;
+import hayaa.basemodel.model.*;
 import hayaa.basemodel.model.GridPager.GridPager;
 import hayaa.basemodel.model.GridPager.GridPagerPamater;
-import hayaa.basemodel.model.PamaterOperationType;
-import hayaa.basemodel.model.TransactionResult;
 import hayaa.worker.service.core.JobService;
 import hayaa.worker.service.model.Job;
 import hayaa.worker.service.model.JobSearchPamater;
@@ -30,11 +27,11 @@ public class JobController {
     private JobService jobService;
 
     @RequestMapping(value = "pager")
-    public TransactionResult<GridPager<Job>> GetPager(int page, int size, int departmentId) {
+    public TransactionResult<GridPager<Job>> GetPager(int page, int size, Integer departmentId) {
         TransactionResult<GridPager<Job>> result = new TransactionResult<GridPager<Job>>();
         GridPagerPamater<JobSearchPamater> pamater = new GridPagerPamater<>();
         JobSearchPamater dsp=  new JobSearchPamater();
-        dsp.setDepartmentId(departmentId,PamaterOperationType.Equal);
+        dsp.setDepartmentId(departmentId);
         pamater.setSearchPamater(dsp);
         pamater.setCurrent(page);
         pamater.setPageSize(size);
@@ -52,6 +49,32 @@ public class JobController {
         TransactionResult<Job> result = new TransactionResult<Job>();
         FunctionResult<Job> serviceResult = jobService.Get(id);
         if(serviceResult.isActionResult()&&serviceResult.isHavingData()){
+            result.setData(serviceResult.getData());
+        }else {
+            result.setCode(103);
+            result.setMessage("暂无数据");
+        }
+        return result;
+    }
+    @RequestMapping(value = "list")
+    public TransactionResult<List<Job>> getList(Integer departmentId) {
+        TransactionResult<List<Job>> result = new TransactionResult<List<Job>>();
+        JobSearchPamater jsp=new JobSearchPamater();
+        jsp.setDepartmentId(departmentId);
+        FunctionListResult<Job> serviceResult = jobService.GetList(jsp);
+        if(serviceResult.isActionResult()&&serviceResult.isHavingData()){
+            result.setData(serviceResult.getData());
+        }else {
+            result.setCode(103);
+            result.setMessage("暂无数据");
+        }
+        return result;
+    }
+    @RequestMapping(value = "set")
+    public TransactionResult<Boolean> Set(int companyId,int departmentId,int jobId,int userId) {
+        TransactionResult<Boolean> result = new TransactionResult<Boolean>();
+        FunctionOpenResult<Boolean> serviceResult = jobService.set(companyId,departmentId,jobId,userId);
+        if(serviceResult.isActionResult()){
             result.setData(serviceResult.getData());
         }else {
             result.setCode(103);

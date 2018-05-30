@@ -1,6 +1,7 @@
 package hayaa.worker.servicecontroller;
 
 
+import hayaa.basemodel.model.FunctionListResult;
 import hayaa.basemodel.model.FunctionOpenResult;
 import hayaa.basemodel.model.FunctionResult;
 import hayaa.basemodel.model.GridPager.GridPager;
@@ -49,6 +50,18 @@ public class CompanyController {
     public TransactionResult<Company> Get(int id) {
         TransactionResult<Company> result = new TransactionResult<Company>();
         FunctionResult<Company> serviceResult = companyService.Get(id);
+        if(serviceResult.isActionResult()&&serviceResult.isHavingData()){
+            result.setData(serviceResult.getData());
+        }else {
+            result.setCode(103);
+            result.setMessage("暂无数据");
+        }
+        return result;
+    }
+    @RequestMapping(value = "list")
+    public TransactionResult<List<Company>> getList() {
+        TransactionResult<List<Company>> result = new TransactionResult<List<Company>>();
+        FunctionListResult<Company> serviceResult = companyService.GetList(new CompanySearchPamater());
         if(serviceResult.isActionResult()&&serviceResult.isHavingData()){
             result.setData(serviceResult.getData());
         }else {

@@ -1,6 +1,7 @@
 package hayaa.worker.service.core;
 
 import hayaa.worker.service.model.Job;
+import hayaa.worker.service.model.JobSearchPamater;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -19,6 +20,5 @@ interface JobMapper {
     @Select("select * from Job where JobId =#{Id}")
     Job get(int Id);
 
-    @Select("select * from Job ${whereSql}")
-    List<Job> getList(@Param("whereSql") String whereSql);
+    List<Job> getList(@Param("searchPamater") JobSearchPamater searchPamater);
 }
