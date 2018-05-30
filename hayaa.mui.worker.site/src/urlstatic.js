@@ -1,11 +1,13 @@
 const evn="dev";
 const  baseUrl={
     worker:"http://"+evn+".worker.service.xieqj.net:30001/",
-    security:"http://"+evn+".security.xieqj.net:10082/"
+    security:"http://"+evn+".security.xieqj.net:10082/",
+    oss:"http://"+evn+".security.xieqj.net:10020/",
 }
 const urls={
     authUrl:baseUrl.security+"api/login/IsLogin",
     loginUrl:baseUrl.security+"api/login/Login",
+    upUrl:baseUrl.oss+"file/img",
     company_pager_url:baseUrl.worker+"company/pager",
     company_list_url:baseUrl.worker+"company/list",
     company_get_url:baseUrl.worker+"company/get",

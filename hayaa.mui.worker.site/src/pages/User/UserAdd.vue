@@ -26,11 +26,11 @@
             <el-form-item label="照片">
                 <el-upload
                         class="avatar-uploader"
-                        action="https://jsonplaceholder.typicode.com/posts/"
+                        :action="upUrl"
                         :show-file-list="false"
                         :on-success="handleAvatarSuccess"
                         :before-upload="beforeAvatarUpload">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                    <img v-if="ruleForm.photo" :src="ruleForm.photo" class="avatar">
                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </el-form-item>
@@ -51,6 +51,7 @@
         name: "UserAdd",
         data: function () {
             return {
+                upUrl:urls.upUrl,
                 ruleForm: {
                     personId: 0,
                     birthday: '',
@@ -62,7 +63,7 @@
                     nickName: '',
                     personId: '',
                     personGroup: 0,
-                    photo: ''
+                    photo:null
                 },
                 rules: {
                     name: [

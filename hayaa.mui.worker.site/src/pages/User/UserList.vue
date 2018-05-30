@@ -29,7 +29,12 @@
                         label="姓名"
                         width="120">
                     <template slot-scope="scope">
-                        <span>{{ scope.row.name }}</span>
+                        <el-popover trigger="hover" placement="top">
+                            <div><img :src="scope.row.photo" style="width: 120px;height:100px;"/></div>
+                            <div slot="reference" class="name-wrapper">
+                                <el-tag size="medium">{{ scope.row.name }}</el-tag>
+                            </div>
+                        </el-popover>
                     </template>
                 </el-table-column>
                 <el-table-column
