@@ -3,13 +3,11 @@ package hayaa.worker.servicecontroller;
 import hayaa.basemodel.model.FunctionOpenResult;
 import hayaa.basemodel.model.FunctionResult;
 import hayaa.basemodel.model.GridPager.GridPager;
-import hayaa.basemodel.model.GridPager.GridPagerPamater;
 import hayaa.basemodel.model.TransactionResult;
-import hayaa.worker.service.core.PersonService;
-import hayaa.worker.service.core.UserService;
+import hayaa.worker.service.IPersonService;
+import hayaa.worker.service.IUserService;
 import hayaa.worker.service.model.Person;
 import hayaa.worker.service.model.User;
-import hayaa.worker.service.model.UserSearchPamater;
 import hayaa.worker.service.model.UserView;
 import hayaa.worker.servicecontroller.model.UserExtend;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +26,9 @@ import java.util.List;
 @CrossOrigin(origins = "*",allowCredentials="true")
 public class UserController {
     @Autowired
-    private PersonService personService;
+    private IPersonService personService;
     @Autowired
-    private UserService userService;
+    private IUserService userService;
     @RequestMapping(value = "pager")
     public TransactionResult<GridPager<UserView>> GetPager(int page, int size,String nickName) {
         TransactionResult<GridPager<UserView>> result = new TransactionResult<GridPager<UserView>>();

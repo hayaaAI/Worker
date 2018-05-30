@@ -23,7 +23,7 @@ interface UserMapper {
 
     @Select("select * from User ${whereSql}")
     List<User> getList(@Param("whereSql") String whereSql);
-    @Select("select u.UserId,u.NickName,p.PersonId,p.`Name`,c.CompanyName as company,d.`Name` as department" +
+    @Select("select u.UserId,u.Photo,u.NickName,p.PersonId,p.`Name`,c.CompanyName as company,d.`Name` as department" +
             ",j.`Name` as jobName,u.createTime from User as u INNER JOIN Person as p on u.PersonId=p.PersonId " +
             "left JOIN Rel_Company_Department_Job_User as r on u.UserId=r.UserId " +
             "left JOIN Company as c on r.CompanyId=c.CompanyId " +

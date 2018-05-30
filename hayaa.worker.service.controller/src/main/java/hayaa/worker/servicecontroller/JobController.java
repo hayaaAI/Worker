@@ -1,10 +1,13 @@
 package hayaa.worker.servicecontroller;
 
 
-import hayaa.basemodel.model.*;
+import hayaa.basemodel.model.FunctionListResult;
+import hayaa.basemodel.model.FunctionOpenResult;
+import hayaa.basemodel.model.FunctionResult;
 import hayaa.basemodel.model.GridPager.GridPager;
 import hayaa.basemodel.model.GridPager.GridPagerPamater;
-import hayaa.worker.service.core.JobService;
+import hayaa.basemodel.model.TransactionResult;
+import hayaa.worker.service.IJobService;
 import hayaa.worker.service.model.Job;
 import hayaa.worker.service.model.JobSearchPamater;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +27,7 @@ import java.util.List;
 public class JobController {
 
     @Autowired
-    private JobService jobService;
+    private IJobService jobService;
 
     @RequestMapping(value = "pager")
     public TransactionResult<GridPager<Job>> GetPager(int page, int size, Integer departmentId) {

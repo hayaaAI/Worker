@@ -4,7 +4,7 @@ package hayaa.worker.servicecontroller;
 import hayaa.basemodel.model.*;
 import hayaa.basemodel.model.GridPager.GridPager;
 import hayaa.basemodel.model.GridPager.GridPagerPamater;
-import hayaa.worker.service.core.DepartmentService;
+import hayaa.worker.service.IDepartmentService;
 import hayaa.worker.service.model.Department;
 import hayaa.worker.service.model.DepartmentSearchPamater;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import java.util.List;
 public class DepartmentController {
 
     @Autowired
-    private DepartmentService departmentService;
+    private IDepartmentService departmentService;
 
     @RequestMapping(value = "pager")
     public TransactionResult<GridPager<Department>> GetPager(int page, int size,int companyId) {

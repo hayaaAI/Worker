@@ -11,6 +11,16 @@ public class UserView extends BaseData {
     private String department;
     private String jobName;
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    private String photo;
+
     public Integer getUserId() {
         return userId;
     }
