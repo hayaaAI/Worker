@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: hayaaAI:hayaa.configseed:1.0.0-SNAPSHOT">
     <CLASSES>
-      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.configseed/1.0.0-SNAPSHOT/hayaa.configseed-1.0.0-20180530.163642-58.jar!/" />
+      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.configseed/1.0.0-SNAPSHOT/hayaa.configseed-1.0.0-20180611.084036-1575.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.configseed/1.0.0-SNAPSHOT/hayaa.configseed-1.0.0-20180530.163642-58-javadoc.jar!/" />
+      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.configseed/1.0.0-SNAPSHOT/hayaa.configseed-1.0.0-20180611.084036-1575-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.configseed/1.0.0-SNAPSHOT/hayaa.configseed-1.0.0-20180530.163642-58-sources.jar!/" />
+      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.configseed/1.0.0-SNAPSHOT/hayaa.configseed-1.0.0-20180611.084036-1575-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

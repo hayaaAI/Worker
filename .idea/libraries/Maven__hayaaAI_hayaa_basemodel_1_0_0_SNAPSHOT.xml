@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: hayaaAI:hayaa.basemodel:1.0.0-SNAPSHOT">
     <CLASSES>
-      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.basemodel/1.0.0-SNAPSHOT/hayaa.basemodel-1.0.0-20180530.163610-30.jar!/" />
+      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.basemodel/1.0.0-SNAPSHOT/hayaa.basemodel-1.0.0-20180611.084006-1544.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.basemodel/1.0.0-SNAPSHOT/hayaa.basemodel-1.0.0-20180530.163610-30-javadoc.jar!/" />
+      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.basemodel/1.0.0-SNAPSHOT/hayaa.basemodel-1.0.0-20180611.084006-1544-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.basemodel/1.0.0-SNAPSHOT/hayaa.basemodel-1.0.0-20180530.163610-30-sources.jar!/" />
+      <root url="jar://M:/mavenRepos/repo/hayaaAI/hayaa.basemodel/1.0.0-SNAPSHOT/hayaa.basemodel-1.0.0-20180611.084006-1544-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
