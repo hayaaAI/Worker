@@ -1,5 +1,5 @@
 {
-  "SeedServerUrl": "http://dev.remoteconfig.xieqj.net:10080/api/config/SendConfig",
+  "SeedServerUrl": "http://test.remoteconfig.xieqj.net/api/config/SendConfig",
   "LocalConfigDirectoryPath": "config",
   "VirtualPath": true,
   "SecurityToken": "",

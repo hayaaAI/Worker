@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication(exclude = {
         DataSourceAutoConfiguration.class
 })
-public class Application extends DataConfig{
+public class Application {
     public static void main(String[] args) throws Exception {
         AppRoot.StartApp();
         DataConfig dataConfig=new DataConfig();
